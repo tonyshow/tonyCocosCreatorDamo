@@ -1,2 +1,2 @@
-# tonyCocosCreatorDamo
-cocos creator
+# hello-world
+Hello world new project template.

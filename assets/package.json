@@ -1,0 +1,11 @@
+{
+    "name": "pomelo-nodejs-client",
+    "version": "0.0.1",
+    "description": "A pomelo nodejs client",
+    "author": "<kilua626@gmail.com>",
+	"iconv-lite": "0.4.25",  
+	"dependencies":{
+		"request":"^2.69.0"
+	}
+	
+}
