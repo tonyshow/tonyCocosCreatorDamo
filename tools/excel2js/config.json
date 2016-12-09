@@ -1,0 +1,11 @@
+{
+	"ActivetyStrength":
+	{
+		"key":"id",
+		"keyList":"id#name & id#level"
+	},
+	"CommonParameter":
+	{
+		"key":"id"
+	}
+}

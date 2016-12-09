@@ -1,6 +1,6 @@
 {
   "excludeScenes": [],
-  "includeAnySDK": true,
+  "includeAnySDK": false,
   "includeSdk": [
     "anysdk"
   ],

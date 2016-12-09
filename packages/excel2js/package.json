@@ -1,0 +1,13 @@
+{
+    "name": "excel-to-json",
+    "version": "0.0.1",
+    "description": "A package parse excel and export to json",
+    "author": "Chukong Technologies",
+    "main": "main.js",
+    "build": false,
+    "main-menu": {
+        "工具/策划表转Js": {
+            "message": "excel-to-json:parse"
+        }
+    }
+}

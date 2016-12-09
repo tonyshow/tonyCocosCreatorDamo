@@ -6,7 +6,7 @@ var util = require('util');
 
 var IndexData = require('../jsonTable');
 
-var Goods = function (data) {
+var Goods = function (data) {    
     IndexData.call(this, data, [['index']]);
 };
 

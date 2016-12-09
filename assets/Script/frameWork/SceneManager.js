@@ -14,7 +14,7 @@ var sceneManager = (function () {
             loadScene_json :function(){
                 cc.loader.loadRes('scene',function(err,txt){      
                     scene_json = txt;
-                     cc.log("加载scene.json %s ",JSON.stringify(txt));
+                     //cc.log("加载scene.json %s ",JSON.stringify(txt));
                 });
             }, 
 

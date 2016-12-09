@@ -12,12 +12,12 @@ var MsgManager = (function(){
                 var self = this;
                 cc.loader.loadRes('msg',function(err,txt){      
                     cfg_json = txt;
-                      cc.log("加载msg.json %s ",JSON.stringify(cfg_json));
+                      //cc.log("加载msg.json %s ",JSON.stringify(cfg_json));
                 });
             },
              gotoMsg:function( msgEnum ){
                  currName =  cfg_json[msgEnum.toString()];
-                 cc.log("消息弹框的预设路径 %s ",currName);
+                 //cc.log("消息弹框的预设路径 %s ",currName);
             },
         }
     }
