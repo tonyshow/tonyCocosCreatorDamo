@@ -1,3 +1,3 @@
 excel2json.py .\in .\out
-xcopy  out .\..\..\assets\Script\jsonManager\rowParser\
+xcopy  out .\..\..\assets\Script\util\rowParser\
 pause
