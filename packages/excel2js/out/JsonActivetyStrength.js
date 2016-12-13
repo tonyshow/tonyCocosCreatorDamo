@@ -1,7 +1,7 @@
 var JsonBase = require('../JsonBase'),
 util = require('util');
 
-var JosnActivetyStrength = function () {
+var JsonActivetyStrength = function () {
 
 	var data = [[1,1,12,2,7101],[2,1,18,2,7101]];
 
@@ -13,7 +13,7 @@ var JosnActivetyStrength = function () {
 
 };
 
-util.inherits( JosnActivetyStrength, JsonBase );
+util.inherits( JsonActivetyStrength, JsonBase );
 
-module.exports = JosnActivetyStrength;
+module.exports = JsonActivetyStrength;
 

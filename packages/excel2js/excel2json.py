@@ -300,7 +300,7 @@ def createJsFile(src , chinesName , dst ):
 	txtFile.write( "var JsonBase = require('../JsonBase'),\n" );
 	txtFile.write( "util = require('util');\n\n" );
 	  
-	className = 'Josn'+jsonName;
+	className = 'Json'+jsonName;
 	tmpStr = 'var {0} = function () '.format(className);
 	txtFile.write(tmpStr);
 	txtFile.write('{\n\n');
