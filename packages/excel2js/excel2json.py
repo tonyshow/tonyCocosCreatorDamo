@@ -255,8 +255,11 @@ def getRowIndex( wb,sheetName , keyPos ):
 				getCurrValue = re.sub('\.0*$', "", getCurrValue)
 			if not isNumber(getCurrValue.strip()):
 				getCurrValue = '\"%s\"'%getCurrValue 
+				tmp+= '{0}:{1},'.format(getCurrValue,int(rownum)-3 );
+			else:
+				tmp+= '"{0}":{1},'.format(getCurrValue,int(rownum)-3 );
 
-			tmp+= '{0}:{1},'.format(getCurrValue,int(rownum) ); 
+			 
 	tmp = DelLastChar(tmp);
 	tmp+='}'
 	return tmp;
@@ -297,12 +300,10 @@ def create_dataApi():
 		 
 		#第一个
 		if( i == 0 ):
-			print'第一个 i = %s , name = %s'%( i , name ); 
 			createIfOrelif(txtFile,'if',name);
 		elif( i > 0 and i < int(allFileNum-1)):
 			createIfOrelif(txtFile,'else if',name);
 		else:
-			print'最后一个 i = %s , name = %s'%( i , name );
 			createIfOrelif(txtFile,'else if',name);
 			pass
 	txtFile.write( doNextOneLine('}'));			
@@ -345,8 +346,8 @@ def createJsFile(src , chinesName , dst ):
 	if(config.get(jsonName,False) == False ):
 		return;
 
-	print '\n-- chinesName =  %s ' %(chinesName);
-	print '-- json   =  Json%s.js  ' %(jsonName);
+	 
+	
 	nameListJson = getIndexNames(allWb,jsonName);
 
 	#-------------------------------------------------------------
@@ -360,6 +361,10 @@ def createJsFile(src , chinesName , dst ):
 	txtFile.write( "util = require('util');\n\n" );
 	  
 	className = 'Json'+jsonName;
+
+	print'chinesName = %s' %(chinesName);
+	print'className  = %s\n' %(className);
+
 	fileNameList.append(className);
 	tmpStr = 'var {0} = function () '.format(className);
 	txtFile.write(tmpStr);
@@ -432,10 +437,7 @@ def main():
 	else:
 		os.mkdir( outPath ) 
 	removeFileInFirstDir(outPath) 
-	print'file_folder'
 	file_folder(dir, outPath);
-
-	print'file_folder--end %s'%fileNameList;
 	create_dataApi();
 if __name__ == '__main__':
 	main()

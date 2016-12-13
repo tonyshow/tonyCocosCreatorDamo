@@ -36,7 +36,6 @@ pro.findById = function( id ){
  */
 pro.rowDataByRow = function( row ){
     var rowData = this.data[row]; 
-    cc.log(' rowDataByRow row：%s rowData : %s ',row, JSON.stringify(rowData) );
     return rowData;
 };
 
@@ -45,7 +44,6 @@ pro.rowDataByRow = function( row ){
  */
 pro.findRowById = function( id ){
     var row = this.indexs[id];
-    cc.log(' findRowById  row : %s ',row);
     return row;
 };
 
