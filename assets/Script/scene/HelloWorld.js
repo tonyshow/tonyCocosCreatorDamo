@@ -22,7 +22,8 @@ cc.Class({
         var sceneName =  SceneManager.Inst().getCurrScene(); 
         var self = this; 
         self.button.node.on(cc.Node.EventType.TOUCH_START , function(){
-            
+            var data  = dataApi.JsonActivetyStrength.findById(1); 
+            cc.log('data : %j',JSON.stringify(data));
         });
     },  
 });

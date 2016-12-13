@@ -14,7 +14,7 @@ dir='./in'			#Դ�ļ��洢Ŀ¼
 outPath='./out/' 	#Ŀ���ļ��洢Ŀ¼
 dataTypeLine = 1    #����������
 indexLine = 2		#������������
-
+fileNameList=[];	#存储所以文件的名字
 jsonConfig=json.loads('{"Compose":{"uid":"needRoleQuality","conformityDatas":"newRoleId,rate"}}');
 
 #===================================================================================================
@@ -196,7 +196,8 @@ def createNewJson(paths, name, outPath):
 #===================================================================================================
 def doNextLine( strData ):
 	return (strData+'\n\n');
-
+def doNextOneLine( strData ):
+	return (strData+'\n');
 #===================================================================================================
 def DelLastChar(str):
     str_list=list(str)
@@ -267,6 +268,64 @@ def loadConfig():
         data = json.load(json_file)
         return data
 
+def createIfOrelif( txtFile,ifOrElif,name ):
+	txtFile.write('	{0}("{1}"==name)'.format(ifOrElif,name) );
+	txtFile.write(doNextOneLine('{'));
+	txtFile.write( doNextOneLine("		var {0} = require('./rowParser/{1}');".format(name,name)));
+	txtFile.write( doNextOneLine('		return new {0}();'.format(name)));
+	txtFile.write( doNextOneLine('	}'));
+
+#===================================================================================================	
+#创建dataApi.js文件 
+def create_dataApi():
+	#头文件部分
+	fullTxtPath = outPath + '\\dataApi.js'; 
+	txtFile = open(fullTxtPath, 'wb+')
+	txtFile.read().decode("utf-8") 
+	txtFile.write( '/**\n');
+	txtFile.write( '* 本地数据管理\n');
+	txtFile.write( '*/\n');
+	txtFile.write( doNextLine('var exp = module.exports = {};'));
+	txtFile.write( doNextLine('var modules = exp.modules = {};'));
+	tmpNames = 'var names ={0};'.format(fileNameList);
+	tmpNames = tmpNames.replace('u', '')
+	txtFile.write( doNextLine( tmpNames )); 
+	txtFile.write( doNextOneLine('function create( name ){'));
+	allFileNum = len(fileNameList); 
+	for i in range(0,allFileNum):
+		name = fileNameList[i];
+		 
+		#第一个
+		if( i == 0 ):
+			print'第一个 i = %s , name = %s'%( i , name ); 
+			createIfOrelif(txtFile,'if',name);
+		elif( i > 0 and i < int(allFileNum-1)):
+			createIfOrelif(txtFile,'else if',name);
+		else:
+			print'最后一个 i = %s , name = %s'%( i , name );
+			createIfOrelif(txtFile,'else if',name);
+			pass
+	txtFile.write( doNextOneLine('}'));			
+	  
+	txtFile.write( doNextOneLine('function doman(){   '));
+	txtFile.write( '    for(var i = 0 ; i < {0} ; ++i )'.format(allFileNum));
+	txtFile.write( doNextOneLine('{')); 
+	txtFile.write( doNextOneLine('        var name = names[i];'));
+	txtFile.write( doNextOneLine('        Object.defineProperty(exp, name, {'));
+	txtFile.write( doNextOneLine('            get: (function (name) {'));
+	txtFile.write( doNextOneLine('                var mod = modules[name];'));
+	txtFile.write( doNextOneLine('                return function () {'));
+	txtFile.write( doNextOneLine('                {'));
+	txtFile.write( doNextOneLine('                    mod = modules[name] = create( name );'));
+	txtFile.write( doNextOneLine('                }'));
+	txtFile.write( doNextOneLine('                return mod;'));
+	txtFile.write( doNextOneLine('            }'));
+	txtFile.write( doNextOneLine('            })(name)'));
+	txtFile.write( doNextOneLine('        });'));
+	txtFile.write( doNextOneLine('    } '));
+	txtFile.write( doNextOneLine('}'));
+	txtFile.write( doNextOneLine('doman();'));
+		 
 #===================================================================================================	
 #src 			: elsx 所在的相对路径	 ( ./in/H活动-领体力.xlsx )
 #chinesName		：elsx 文件名字			 ( H活动-领体力 )
@@ -301,6 +360,7 @@ def createJsFile(src , chinesName , dst ):
 	txtFile.write( "util = require('util');\n\n" );
 	  
 	className = 'Json'+jsonName;
+	fileNameList.append(className);
 	tmpStr = 'var {0} = function () '.format(className);
 	txtFile.write(tmpStr);
 	txtFile.write('{\n\n');
@@ -332,8 +392,10 @@ def createJsFile(src , chinesName , dst ):
 	txtFile.write(doNextLine(tmpStr));	
 	txtFile.close();
 
+
 #===================================================================================================	
 def file_folder(src, dst):  
+	
 	if os.path.isfile(src):  
 		try:	
 			outFilePath = src
@@ -343,6 +405,7 @@ def file_folder(src, dst):
 			length = len(listFolder)-1;
 			fileName_xlsx = listFolder[length]; 
 			fileName = (fileName_xlsx.split("."))[0];
+			#create_dataApi( fileName); 
 			createJsFile(  src, fileName, dst  );				
 		except:
 			pass
@@ -350,7 +413,7 @@ def file_folder(src, dst):
 		for item in os.listdir(src):
 			itemsrc=os.path.join(src,item)
 			file_folder(itemsrc, dst)		
-
+	
 #===================================================================================================
 def main(): 
 	if len(sys.argv) < 3:
@@ -369,8 +432,10 @@ def main():
 	else:
 		os.mkdir( outPath ) 
 	removeFileInFirstDir(outPath) 
-	
+	print'file_folder'
 	file_folder(dir, outPath);
-	
+
+	print'file_folder--end %s'%fileNameList;
+	create_dataApi();
 if __name__ == '__main__':
 	main()
