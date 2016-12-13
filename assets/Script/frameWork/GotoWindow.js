@@ -2,25 +2,23 @@
  * 界面的跳转 两种界面：场景 、弹框
  * 作者 ： tony
  */
-var SceneManager = require("SceneManager");
-var MsgManager = require("MsgManager"); 
 cc.Class({
     extends: cc.Component,
 	editor: CC_EDITOR && {
         inspector: "packages://enum/PanelEnum-inspector.js",
     },
     properties: {
-        windowTypeEnum:{
-            default:windowTypeEnum.SCENE,
-            type:windowTypeEnum
+        EnumWindowType:{
+            default:EnumWindowType.SCENE,
+            type:EnumWindowType
         }, 
-        msgEnum:{
-            default:msgEnum.LOGIN,
-            type:msgEnum,
+        EnumMsg:{
+            default:EnumMsg.LOGIN,
+            type:EnumMsg,
         },
-        sceneEnum:{
-            default:sceneEnum.GAME_MAIN,
-            type:sceneEnum,
+        EnumScene:{
+            default:EnumScene.GAME_MAIN,
+            type:EnumScene,
         }       
     }, 
 
@@ -30,11 +28,11 @@ cc.Class({
     gotoWindow :function()
     {         
         var self = this; 
-        if( windowTypeEnum.SCENE == self.windowTypeEnum )
+        if( EnumWindowType.SCENE == self.EnumWindowType )
         { 
             self.gotoScene();
         }        
-        else if(  windowTypeEnum.MSG == self.windowTypeEnum )
+        else if(  EnumWindowType.MSG == self.EnumWindowType )
         { 
             self.gotoMsg();
         } 
@@ -44,14 +42,14 @@ cc.Class({
      * 弹框界面弹出
      * */
     gotoMsg:function(){ 
-        MsgManager.Inst().gotoMsg( this.msgEnum); 
+        MgMsg.Inst().gotoMsg( this.EnumMsg); 
     },
 
     /*
      * 界面的跳转
      * */
     gotoScene:function(){ 
-        SceneManager.Inst().gotoScene( this.sceneEnum );
+        MgScene.Inst().gotoScene( this.EnumScene );
     }
 
 });

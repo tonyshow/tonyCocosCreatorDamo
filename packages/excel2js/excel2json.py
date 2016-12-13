@@ -274,7 +274,7 @@ def loadConfig():
 def createIfOrelif( txtFile,ifOrElif,name ):
 	txtFile.write('	{0}("{1}"==name)'.format(ifOrElif,name) );
 	txtFile.write(doNextOneLine('{'));
-	txtFile.write( doNextOneLine("		var {0} = require('./rowParser/{1}');".format(name,name)));
+	txtFile.write( doNextOneLine("		var {0} = require('./RowParser/{1}');".format(name,name)));
 	txtFile.write( doNextOneLine('		return new {0}();'.format(name)));
 	txtFile.write( doNextOneLine('	}'));
 
@@ -282,7 +282,7 @@ def createIfOrelif( txtFile,ifOrElif,name ):
 #创建dataApi.js文件 
 def create_dataApi():
 	#头文件部分
-	fullTxtPath = outPath + '\\dataApi.js'; 
+	fullTxtPath = outPath + '\\DataApi.js'; 
 	txtFile = open(fullTxtPath, 'wb+')
 	txtFile.read().decode("utf-8") 
 	txtFile.write( '/**\n');
@@ -326,6 +326,8 @@ def create_dataApi():
 	txtFile.write( doNextOneLine('    } '));
 	txtFile.write( doNextOneLine('}'));
 	txtFile.write( doNextOneLine('doman();'));
+	txtFile.write( doNextOneLine('window.DataApi = exp'));
+ 
 		 
 #===================================================================================================	
 #src 			: elsx 所在的相对路径	 ( ./in/H活动-领体力.xlsx )
@@ -336,31 +338,31 @@ def createJsFile(src , chinesName , dst ):
 	allWb = xlrd.open_workbook(src);
 	 
 	 
-	jsonName = allWb.sheet_names()[0];   
+	DataName = allWb.sheet_names()[0];   
 	
 	 
 
 	config = loadConfig();
-	uKey =  config[jsonName]['key'];
+	uKey =  config[DataName]['key'];
 
-	if(config.get(jsonName,False) == False ):
+	if(config.get(DataName,False) == False ):
 		return;
 
 	 
 	
-	nameListJson = getIndexNames(allWb,jsonName);
+	nameListJson = getIndexNames(allWb,DataName);
 
 	#-------------------------------------------------------------
 	#创建文件
-	fullTxtPath = outPath + '\\Json' + jsonName + '.js';
+	fullTxtPath = outPath + '\\Data' + DataName + '.js';
 	txtFile = open(fullTxtPath, 'wb+')
 	txtFile.read().decode("utf-8")
 	
 	#添加require文件
-	txtFile.write( "var JsonBase = require('../JsonBase'),\n" );
+	txtFile.write( "var DataBase = require('../DataBase'),\n" );
 	txtFile.write( "util = require('util');\n\n" );
 	  
-	className = 'Json'+jsonName;
+	className = 'Data'+DataName;
 
 	print'chinesName = %s' %(chinesName);
 	print'className  = %s\n' %(className);
@@ -371,12 +373,12 @@ def createJsFile(src , chinesName , dst ):
 	txtFile.write('{\n\n');
 	
 	#(1) 数据
-	tmp = getAllJson(allWb , jsonName);
+	tmp = getAllJson(allWb , DataName);
 	tmpStr = '	var data = {0};'.format(tmp);
 	txtFile.write(doNextLine(tmpStr));
 	
 	#(2) key索引生成 
-	tmp = getRowIndex( allWb , jsonName , json.loads(nameListJson)[uKey] );
+	tmp = getRowIndex( allWb , DataName , json.loads(nameListJson)[uKey] );
 	tmpStr = '	var indexs = {0};'.format(tmp);
 	txtFile.write(doNextLine(tmpStr));
 	
@@ -384,13 +386,13 @@ def createJsFile(src , chinesName , dst ):
 	tmpStr = '	var indexNames = {0};'.format(nameListJson);
 	txtFile.write(doNextLine(tmpStr));
 	
-	tmpStr = '	JsonBase.call( this, data , indexs , indexNames );';
+	tmpStr = '	DataBase.call( this, data , indexs , indexNames );';
 	txtFile.write(doNextLine(tmpStr));
 	
 	tmpStr = '};';
 	txtFile.write(doNextLine(tmpStr));
 	
-	tmpStr = 'util.inherits( {0}, JsonBase );'.format(className);
+	tmpStr = 'util.inherits( {0}, DataBase );'.format(className);
 	txtFile.write(doNextLine(tmpStr));
 		
 	tmpStr = 'module.exports = {0};'.format(className);
