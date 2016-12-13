@@ -10,8 +10,7 @@ cc.Class({
         //    visible: true,      // optional, default is true
         //    displayName: 'Foo', // optional
         //    readonly: false,    // optional, default is false
-        // },
-        // ...
+        // }, 
     },
 
     // use this for initialization
