@@ -1,9 +1,9 @@
 var loginAndRegister = require('./../../doMain/LoginAndRegister');
-var MgScene = require('./../../frameWork/MgScene');
 var enumType = cc.Enum({
     register : 1,
     login : 2,
     toGame : 3,
+    choice : 4,
 });
 
 cc.Class({
@@ -55,6 +55,11 @@ cc.Class({
         layoutToGame:{
             default:null,
             type:cc.Layout,
+        },
+
+        layoutChoice:{
+            default:null,
+            type:cc.Layout,
         }
     }, 
 
@@ -84,6 +89,8 @@ cc.Class({
         });        
     },
 
+    
+
     eveToGame:function()
     {
         MgScene.Inst().gotoScene( EnumScene.GAME_MAIN );
@@ -91,24 +98,40 @@ cc.Class({
 
     doShowLayout : function( _enumType )
     {
+        cc.log('doShowLayout _enumType = %s',_enumType);
          this.layoutRegister.node.active = false;
          this.layoutToGame.node.active = false;
          this.layoutLogin.node.active = false;
-
+         this.layoutChoice.node.active = false;
+                  
          switch(_enumType){
              case enumType.register:
                 this.layoutRegister.node.active = true;
-             break;
+                cc.log('register');
+                break;
              case enumType.login:
                 this.layoutLogin.node.active = true;
-             break;
+                cc.log('login');
+                break;
              case enumType.toGame:
                 this.layoutToGame.node.active = true;
-             break;
+                cc.log('toGame');
+                break;
+             case enumType.choice:
+                this.layoutChoice.node.active = true;
+                cc.log('choice');
+                break;
+            default:
+                cc.log("未找到信息");
+                break;
          }
     },
-
+    //选择的类型
+    eveChoice:function( _enumType ,data ){       
+        cc.log('data = %s',data);
+        this.doShowLayout( Number(data) );
+    },
     onLoad:function(){
-        this.doShowLayout(enumType.register);
+        this.doShowLayout(enumType.choice);
     }
 });

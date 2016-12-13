@@ -6,20 +6,14 @@ var MgScene = (function () {
     var instantiated;
     
     var currSceneName = ""; 
-    var scene_json;
     function init() {
         /*这里定义单例代码*/
-        return {
-             
-            loadScene_json :function(){
-                cc.loader.loadRes('scene',function(err,txt){      
-                    scene_json = txt;
-                     //cc.log("加载scene.json %s ",JSON.stringify(txt));
-                });
-            }, 
-
+        return { 
             gotoScene : function( EnumScene ){    
-                currSceneName =  scene_json[EnumScene.toString()];
+                cc.log( 'EnumScene = %s',EnumScene); 
+                var data = DataApi.DataScene.findById( Number(EnumScene) ); 
+                currSceneName = data.sceneName;
+                cc.log( 'currSceneName = %s',currSceneName);  
                 cc.director.loadScene( currSceneName );              
             }, 
 
@@ -33,7 +27,6 @@ var MgScene = (function () {
         Inst: function () {
             if (!instantiated) {
                 instantiated = init();
-                instantiated.loadScene_json();
             }
             return instantiated;
         }

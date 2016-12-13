@@ -18,10 +18,10 @@ cc.Class({
     onLoad: function () {          
         var sceneName =  MgScene.Inst().getCurrScene(); 
         var self = this; 
-        self.button.node.on(cc.Node.EventType.TOUCH_START , function(){ 
-            Player.Inst().getName() 
-            var data = DataApi.DataActivetyStrength.findById(1);
+        self.button.node.on(cc.Node.EventType.TOUCH_START , function(){    
+            var data = DataApi.DataScene.findById(1);
             cc.log( 'data %s',JSON.stringify(data) );
+            cc.log( 'data %s',data.sceneName );
         });
     },  
 });

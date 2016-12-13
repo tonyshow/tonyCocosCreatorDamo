@@ -5,7 +5,7 @@ var exp = module.exports = {};
 
 var modules = exp.modules = {};
 
-var names =['DataCommonParameter', 'DataActivetyStrength'];
+var names =['DataCommonParameter', 'DataActivetyStrength', 'DataScene'];
 
 function create( name ){
 	if("DataCommonParameter"==name){
@@ -16,9 +16,13 @@ function create( name ){
 		var DataActivetyStrength = require('./RowParser/DataActivetyStrength');
 		return new DataActivetyStrength();
 	}
+	else if("DataScene"==name){
+		var DataScene = require('./RowParser/DataScene');
+		return new DataScene();
+	}
 }
 function doman(){   
-    for(var i = 0 ; i < 2 ; ++i ){
+    for(var i = 0 ; i < 3 ; ++i ){
         var name = names[i];
         Object.defineProperty(exp, name, {
             get: (function (name) {

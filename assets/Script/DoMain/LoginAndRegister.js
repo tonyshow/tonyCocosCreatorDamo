@@ -12,6 +12,7 @@ cc.Class({
         var httpRequest = new HttpRequest( url, function(res){
            if( null != cb )
            {
+               cc.log('登录回调 : %s',JSON.stringify(res));
                cb( res.code );
            } 
         });
@@ -24,6 +25,7 @@ cc.Class({
         var httpRequest = new HttpRequest( url, function(res){
            if( null != cb )
            {
+               cc.log('注册回调 : %s',JSON.stringify(res));
                cb( res.code );
            } 
         });
