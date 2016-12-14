@@ -95,8 +95,7 @@ cc.Class({
 
     eveToGame:function()
     {
-        //MgScene.Inst().gotoScene( EnumScene.HELLO_WORD );
-        MsgTextPrompt.create();
+        MgScene.Inst().gotoScene( EnumScene.HELLO_WORD ); 
     },
 
     doShowLayout : function( _enumType )

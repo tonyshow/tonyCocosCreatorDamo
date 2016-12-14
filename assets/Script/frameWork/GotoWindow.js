@@ -17,7 +17,7 @@ cc.Class({
             type:EnumMsg,
         },
         EnumScene:{
-            default:EnumScene.GAME_MAIN,
+            default:EnumScene.HELLO_WORD,
             type:EnumScene,
         }       
     }, 
