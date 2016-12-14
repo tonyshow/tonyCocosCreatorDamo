@@ -1,4 +1,6 @@
 var loginAndRegister = require('./../../doMain/LoginAndRegister');
+var MsgTextPrompt = require('./../Msg/MsgTextPrompt');
+
 var enumType = cc.Enum({
     register : 1,
     login : 2,
@@ -93,7 +95,8 @@ cc.Class({
 
     eveToGame:function()
     {
-        MgScene.Inst().gotoScene( EnumScene.GAME_MAIN );
+        //MgScene.Inst().gotoScene( EnumScene.HELLO_WORD );
+        MsgTextPrompt.create();
     },
 
     doShowLayout : function( _enumType )

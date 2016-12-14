@@ -1,4 +1,4 @@
-cc.Class({
+var MsgBase = cc.Class({
     extends: cc.Component,    
     properties: {
         order:{
@@ -15,3 +15,4 @@ cc.Class({
        this.destroy();   
     }
 });
+window.MsgBase = MsgBase;

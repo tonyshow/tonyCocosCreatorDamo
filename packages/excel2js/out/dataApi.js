@@ -5,20 +5,20 @@ var exp = module.exports = {};
 
 var modules = exp.modules = {};
 
-var names =['DataCommonParameter', 'DataActivetyStrength', 'DataScene'];
+var names =['DataCommonParameter', 'DataScene', 'DataMsg'];
 
 function create( name ){
 	if("DataCommonParameter"==name){
 		var DataCommonParameter = require('./RowParser/DataCommonParameter');
 		return new DataCommonParameter();
 	}
-	else if("DataActivetyStrength"==name){
-		var DataActivetyStrength = require('./RowParser/DataActivetyStrength');
-		return new DataActivetyStrength();
-	}
 	else if("DataScene"==name){
 		var DataScene = require('./RowParser/DataScene');
 		return new DataScene();
+	}
+	else if("DataMsg"==name){
+		var DataMsg = require('./RowParser/DataMsg');
+		return new DataMsg();
 	}
 }
 function doman(){   

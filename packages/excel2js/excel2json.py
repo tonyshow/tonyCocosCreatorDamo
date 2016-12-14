@@ -278,6 +278,22 @@ def createIfOrelif( txtFile,ifOrElif,name ):
 	txtFile.write( doNextOneLine('		return new {0}();'.format(name)));
 	txtFile.write( doNextOneLine('	}'));
 
+#===================================================================================================
+#创建get方法
+def createGetFunction(txtFile, nameListJson , uKey ):	
+	print'nameListJson%s'%nameListJson;
+	for key in json.loads(nameListJson):
+		print'key = %s'%key.capitalize();
+		Key = key.capitalize();
+		strtmp = 'pro.get{0} = function(id)'.format(Key);
+		txtFile.write( doNextOneLine( strtmp ));
+		txtFile.write( doNextOneLine( '{' ));
+		txtFile.write( doNextOneLine( '	var data = this.findById(id);' ));
+		strtmp = '	return data.{0}'.format(key);
+		txtFile.write( doNextOneLine( strtmp ));
+		txtFile.write( doNextOneLine( '}' ));
+		 
+
 #===================================================================================================	
 #创建dataApi.js文件 
 def create_dataApi():
@@ -394,7 +410,12 @@ def createJsFile(src , chinesName , dst ):
 	
 	tmpStr = 'util.inherits( {0}, DataBase );'.format(className);
 	txtFile.write(doNextLine(tmpStr));
-		
+			
+	tmpStr = 'var pro = {0}.prototype;'.format(className);
+	txtFile.write(doNextLine(tmpStr));
+	
+	createGetFunction(txtFile,nameListJson,uKey);
+
 	tmpStr = 'module.exports = {0};'.format(className);
 	txtFile.write(doNextLine(tmpStr));	
 	txtFile.close();

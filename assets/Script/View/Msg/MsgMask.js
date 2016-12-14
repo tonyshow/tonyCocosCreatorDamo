@@ -1,4 +1,4 @@
-var MsgBase = require('./MsgBase');
+//var MsgBase = require('./MsgBase');
 cc.Class({
     extends: MsgBase,
     properties: {       

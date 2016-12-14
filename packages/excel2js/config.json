@@ -1,9 +1,4 @@
-{
-	"ActivetyStrength":
-	{
-		"key":"id",
-		"keyList":"id#name & id#level"
-	},
+{ 
 	"CommonParameter":
 	{
 		"key":"id"
@@ -11,5 +6,9 @@
 	"Scene":
 	{
 		"key":"id"
-	}
+	},
+	"Msg":
+	{
+		"key":"id"
+	} 
 }
