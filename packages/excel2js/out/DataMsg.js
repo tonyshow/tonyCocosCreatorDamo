@@ -3,9 +3,9 @@ util = require('util');
 
 var DataMsg = function () {
 
-	var data = [["MsgTextPrompt","prefabs/msg/MsgTextPrompt",3000]];
+	var data = [["MsgTextPrompt","prefabs/msg/MsgTextPrompt",3000],["MsgTestPrompt","prefabs/msg/MsgTestPrompt",3000]];
 
-	var indexs = {"MsgTextPrompt":0};
+	var indexs = {"MsgTextPrompt":0,"MsgTestPrompt":1};
 
 	var indexNames = {"id":0,"path":1,"order":2};
 

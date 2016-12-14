@@ -5,8 +5,8 @@ cc.Class({
      extends: cc.Component,
 
      //移除自己
-     remove:function(){ 
-        this.node.destroy();
+     remove:function(){  
         this.destroy();
+        this.node.destroy();
      } 
 });

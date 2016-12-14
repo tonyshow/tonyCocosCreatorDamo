@@ -1,5 +1,4 @@
-var MsgSet = require('./../msg/set/MsgSet'); 
-var MsgTextPrompt = require('./../Msg/MsgTextPrompt');
+var MsgTextPrompt = require('./../Msg/MsgTextPrompt'); 
 var _ = require('underscore'); 
 cc.Class({
     extends: cc.Component,
@@ -20,7 +19,7 @@ cc.Class({
         var sceneName =  MgScene.Inst().getCurrScene(); 
         var self = this; 
         self.button.node.on(cc.Node.EventType.TOUCH_START , function(){    
-            MsgTextPrompt.create('测试飘字');
+            MsgTextPrompt.create('测试飘字0');
         });
     },  
 });

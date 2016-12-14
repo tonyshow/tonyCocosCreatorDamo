@@ -57,7 +57,7 @@
   "events": [
     {
       "frame": 2,
-      "func": "",
+      "func": "remove",
       "params": []
     }
   ]

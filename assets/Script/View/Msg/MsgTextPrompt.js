@@ -4,17 +4,20 @@
  * 时间：2016-12-14
  */
 var MsgTextPrompt = cc.Class({
-    extends: MsgBase,
+     extends: MsgBase,
      properties: { 
         label: {
             default: null,
             type: cc.Label
-        },          
-    }, 
+        },        
+    },
+    getClassName:function(){
+        return 'MsgTextPrompt';
+    },
     //设置文字
     setText: function ( _text ) {
         this.label.string = _text;
-    },         
+    }  
 });
 
 //创建弹框

@@ -5,6 +5,7 @@
 var MgMsg = (function(){   
     var instantiated;
     var currName;
+    var msgList=[];
     var cfg_json;
     function init(){
         return {
@@ -38,6 +39,16 @@ var MgMsg = (function(){
                         cb(compt)
                     } 
                 })
+            },
+
+            //移除创库
+            remove:function( msgName ){
+                msgList.pop();
+                cc.log('移除弹框后-弹框队列 %s',JSON.stringify(msgList) );
+            },
+            add:function( msgName ){
+                msgList.push( msgName );
+                cc.log('添加新弹框后-弹框队列 %s',JSON.stringify(msgList) );
             }
         }
     }
