@@ -1,5 +1,5 @@
 var MsgTextPrompt = require('./../Msg/MsgTextPrompt'); 
-var _ = require('underscore'); 
+var _ = require('underscore');
 cc.Class({
     extends: cc.Component,
     properties: { 
@@ -19,7 +19,32 @@ cc.Class({
         var sceneName =  MgScene.Inst().getCurrScene(); 
         var self = this; 
         self.button.node.on(cc.Node.EventType.TOUCH_START , function(){    
-            MsgTextPrompt.create('测试飘字0');
+           
+            self.goGame();
         });
-    },  
+    },
+
+    goGame : function () { 
+        try {
+            var _MAC = '123456',
+                pwd = '123456'; 
+            PomeloClient.connect('127.0.0.1', 3014, function () {
+                PomeloClient.queryEntry(_MAC, function (host, port) {
+                    PomeloClient.connect(host, port, function () {
+                        PomeloClient.entry(host, port, _MAC, pwd, function (data) {
+                            MsgTextPrompt.create('测试飘字0');
+                            cc.log('data ----------------- : ',JSON.stringify(data) );
+                            if (data.code !== 200 && data.code !== 1003) {
+                                return;
+                            }else{
+                                PomeloClient.afterLogin(data, _MAC);
+                            }                            
+                        });
+                    });
+                });
+            });
+        } catch (ex) {
+            cc.log('err: ' + ex.stack);
+        }
+    }
 });

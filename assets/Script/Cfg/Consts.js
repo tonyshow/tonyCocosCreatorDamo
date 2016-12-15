@@ -7,3 +7,11 @@ window.CfgMsg = {
     //登录界面
     login : "loginView",
 }
+
+window.GameCode = {
+    OK:200,
+
+    CONNECTOR:{
+        
+    }
+}
