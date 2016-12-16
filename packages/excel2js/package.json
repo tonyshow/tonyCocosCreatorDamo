@@ -6,7 +6,7 @@
     "main": "main.js",
     "build": false,
     "main-menu": {
-        "工具/策划表转Js": {
+        "组件/添加 UI 组件s/js": {
             "message": "excel-to-json:parse"
         }
     }

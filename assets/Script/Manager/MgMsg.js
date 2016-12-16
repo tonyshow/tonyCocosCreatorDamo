@@ -4,7 +4,8 @@
 */
 var MgMsg = (function(){   
     var instantiated;
-    var currName;
+    var currName; 
+    //弹框缓存器：这里目前只是做弹框名字缓存未来有需要会对对象做缓存
     var msgList=[];
     var cfg_json;
     function init(){
