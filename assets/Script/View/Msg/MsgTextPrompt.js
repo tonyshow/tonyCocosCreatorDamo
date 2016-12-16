@@ -29,3 +29,4 @@ MsgTextPrompt.create = function( text )
 };
 
 module.exports = MsgTextPrompt;
+window.MsgTextPrompt = MsgTextPrompt;

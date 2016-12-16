@@ -41,11 +41,7 @@ exp.entry = function (host, port, MAC, pwd, callback) {
         callback(data);
     });
 };
-
-exp.enterScene = function (cb) {
-    console.info('enter scene...');
-    pomelo.request("area.playerHandler.enterScene", {}, cb);
-};
+ 
 
 exp.createPlayer = function (MAC, cb) {
     pomelo.request('connector.roleHandler.createPlayer', {MAC: MAC, name: MAC, pwd: MAC, picId: 1},
@@ -56,34 +52,33 @@ exp.createPlayer = function (MAC, cb) {
 };
 
 
-function enterSceneRes(data){
-
+exp.enterScene= function (){ 
+    cc.log('area.playerHandler.enterScene');
+    pomelo.request("area.playerHandler.enterScene", {}, function(jData){
+        cc.log(JSON.stringify(jData));
+    });
 };
-exp.afterLogin = function(data, MAC) {
-    cc.log('after login begin enter scene...%s',MAC);
 
+exp.afterLogin = function(data, MAC) {
+    cc.log('after login begin enter scene...%s',MAC);  
     /**
      * 处理登录请求
      */
     function login(data) {
-        if (data.code === 1003) {
-            //need create player.
+        if (data.code === 1003) { 
             exp.createPlayer(MAC, function (success) {
                 if (!success) {
                     cc.log('createPlayer create failed!');
                     return;
                 }
-                exp.enterScene(enterSceneRes);
-//                setTimeout(cmds.enterScene, 1000, enterSceneRes);
+                exp.enterScene();
             });
             return;
         }
         cc.log('entry ok!already has player.try enter scene...');
-        exp.enterScene(enterSceneRes);
-    }
-
-    login(data);
-
+        exp.enterScene();
+    } 
+    login(data); 
 }
 
 
