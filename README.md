@@ -1,2 +1,12 @@
-# hello-world
-Hello world new project template.
+
+ccc游戏框架
+
+注意：
+	请勿商业使用（本框架仅个人业余框架）
+
+如有什么问题请联系开发者
+	
+开发者	  ：tony
+联系方式  ：微信wowomimi 、QQ : 994262676
+
+
