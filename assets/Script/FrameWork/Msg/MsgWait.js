@@ -21,18 +21,18 @@ window.MsgWait = cc.Class({
         }
     },
 
-    close : function(){
-         MsgPrompt.createByGameWorld('com_timeout');         
-         this._super(); 
+    close : function(){ 
+         this._super();   
+         MsgPrompt.createByGameWorld('com_timeout');     
     },
 
     doActionClose : function(){
-        var action = cc.fadeTo(0.2, 0);
+       
         var self = this;
-        var finish = cc.callFunc(function(){
-            self.close();
+        var finish = cc.callFunc(function(){ 
+           MsgPrompt.createByGameWorld('com_timeout');     
         });
-        var seq = cc.sequence( cc.fadeTo(1.0, 0),finish ); 
+        var seq = cc.sequence( cc.fadeTo(0.2, 0),finish ); 
         self.node.runAction( seq ); 
     },
 

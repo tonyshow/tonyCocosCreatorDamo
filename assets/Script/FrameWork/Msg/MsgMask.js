@@ -11,8 +11,7 @@ window.MsgMask = cc.Class({
  
     close : function()
     {
-        this._super();               
-        this.node.destroy();  
+        this._super();        
     }, 
 
     getClassName:function(){
