@@ -10,7 +10,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "MsgTextPrompt",
+    "_name": "MsgPrompt",
     "_objFlags": 0,
     "_opacity": 0,
     "_color": {

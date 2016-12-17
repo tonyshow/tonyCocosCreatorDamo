@@ -32,7 +32,7 @@ cc.Class({
                 PomeloClient.queryEntry(_MAC, function (host, port) {
                     PomeloClient.connect(host, port, function () {
                         PomeloClient.entry(host, port, _MAC, pwd, function (data) {
-                            MsgTextPrompt.create( '回包数据 : '+JSON.stringify(data) );
+                            MsgPrompt.create( '回包数据 : '+JSON.stringify(data) );
                             cc.log('data ----------- ------ : ',JSON.stringify(data) );
                             if (data.code !== 200 && data.code !== 1003) {
                                 return;

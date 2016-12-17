@@ -16,7 +16,7 @@ window.MsgWait = cc.Class({
 
     update : function(){
         if(this.isWaitTimeOut()){
-            MsgTextPrompt.createByGameWorld('com_timeout');
+            MsgPrompt.createByGameWorld('com_timeout');
             this.close();
         }
     },
