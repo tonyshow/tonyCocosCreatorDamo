@@ -291,14 +291,14 @@ def createGetFunction(txtFile, nameListJson , uKey ):
 		txtFile.write( doNextOneLine( '	var data = this.findById(id);' ));
 		strtmp = '	return data.{0}'.format(key);
 		txtFile.write( doNextOneLine( strtmp ));
-		txtFile.write( doNextOneLine( '}' ));
+		txtFile.write( doNextOneLine( '};' ));
 		 
 
 #===================================================================================================	
 #创建dataApi.js文件 
 def create_dataApi():
 	#头文件部分
-	fullTxtPath = outPath + '\\DataApi.js'; 
+	fullTxtPath = outPath + '\\{0}Api.js'.format(jsFileBf); 
 	txtFile = open(fullTxtPath, 'wb+')
 	txtFile.read().decode("utf-8") 
 	txtFile.write( '/**\n');
@@ -342,7 +342,7 @@ def create_dataApi():
 	txtFile.write( doNextOneLine('    } '));
 	txtFile.write( doNextOneLine('}'));
 	txtFile.write( doNextOneLine('doman();'));
-	txtFile.write( doNextOneLine('window.DataApi = exp'));
+	txtFile.write( doNextOneLine('window.{0}Api = exp;'.format(jsFileBf)));
  
 		 
 #===================================================================================================	

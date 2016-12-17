@@ -21,16 +21,16 @@ pro.getDescribe = function(id)
 {
 	var data = this.findById(id);
 	return data.describe
-}
+};
 pro.getId = function(id)
 {
 	var data = this.findById(id);
 	return data.id
-}
+};
 pro.getValue = function(id)
 {
 	var data = this.findById(id);
 	return data.value
-}
+};
 module.exports = PlanCommonParameter;
 

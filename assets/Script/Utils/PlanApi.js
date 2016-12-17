@@ -38,4 +38,4 @@ function doman(){
     } 
 }
 doman();
-window.PlanApi = exp
+window.PlanApi = exp;

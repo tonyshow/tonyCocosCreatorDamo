@@ -21,11 +21,11 @@ pro.getScenename = function(id)
 {
 	var data = this.findById(id);
 	return data.sceneName
-}
+};
 pro.getId = function(id)
 {
 	var data = this.findById(id);
 	return data.id
-}
+};
 module.exports = PlanScene;
 

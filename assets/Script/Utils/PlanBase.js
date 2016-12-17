@@ -8,14 +8,14 @@ var util = require('util'),
     _  = require('underscore');
 
     
-var DataBase = function ( data , indexs  , indexNames) {    
+var PlanBase = function ( data , indexs  , indexNames) {    
      EventEmitter.call(this);
      this.data = data;
      this.indexs =indexs;
      this.indexNames = indexNames;
 }; 
 
-var pro = DataBase.prototype;
+var pro = PlanBase.prototype;
 
 /**
  * 通过id获取行数据
@@ -55,4 +55,4 @@ pro.findRowById = function( id ){
     return row;
 };
 
-module.exports = DataBase;
+module.exports = PlanBase;

@@ -21,16 +21,16 @@ pro.getPath = function(id)
 {
 	var data = this.findById(id);
 	return data.path
-}
+};
 pro.getId = function(id)
 {
 	var data = this.findById(id);
 	return data.id
-}
+};
 pro.getOrder = function(id)
 {
 	var data = this.findById(id);
 	return data.order
-}
+};
 module.exports = PlanMsg;
 
