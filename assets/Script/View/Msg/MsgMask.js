@@ -15,15 +15,25 @@ cc.Class({
         this.node.destroy();  
     }, 
 
-    //初始化
-    onLoad : function(){
-        this._super();
-        //设置蒙版透明度
+    getClassName:function(){
+        //子类实现
+    },
+
+    //设置蒙版透明度
+    setOpacity : function( _opacity ){        
         if( Utils.IsNotNull( this.maskLayout ) ){     
             var _node = this.maskLayout.node;
             if( Utils.IsNotNull( _node ) ){
-                 _node.opacity = 255;    
+                 _node.opacity = _opacity;    
+                 return;
             }
         }
+        cc.warn(' warning : 未关联蒙版节点 %s',this.getClassName());
+    },
+
+    //初始化
+    onLoad : function(){
+        this._super();
+        this.setOpacity( 200 );
     }        
 });
