@@ -6,7 +6,7 @@
     "main": "main.js",
     "build": false,
     "main-menu": {
-        "组件/添加 UI 组件s/js": {
+        "转表/xlex2js": {
             "message": "excel-to-json:parse"
         }
     }

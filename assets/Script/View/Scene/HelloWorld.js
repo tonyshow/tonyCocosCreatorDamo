@@ -1,4 +1,5 @@
-var MsgTextPrompt = require('./../Msg/MsgTextPrompt'); 
+var MsgTextPrompt = require('./../Msg/MsgTextPrompt');
+var MsgWait = require('./../Msg/MsgWait');  
 var _ = require('underscore');
 cc.Class({
     extends: cc.Component,
@@ -20,7 +21,8 @@ cc.Class({
         var self = this; 
         self.button.node.on(cc.Node.EventType.TOUCH_START , function(){    
            
-            self.goGame();
+           MsgWait.create();
+           // self.goGame();
         });
     },
 

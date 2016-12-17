@@ -1,14 +1,7 @@
 var MsgBase = cc.Class({
     extends: cc.Component,    
     properties: {
-        order:{
-            default:EnumMsgOrder.MSG_FRIST_WINDOW,
-            type:EnumMsgOrder, 
-        }, 
-        isMask:{
-            default:false,     
-            displayName:"蒙版"       
-        }
+        
     }, 
     //关闭弹框方法
     close:function(){       
@@ -17,12 +10,10 @@ var MsgBase = cc.Class({
     getClassName:function(){
         //子类实现
     },
-    onDestroy:function(){ 
-        cc.log('MsgBase.onDestroy %s', this.getClassName());
+    onDestroy:function(){  
         MgMsg.Inst().remove( this.getClassName() );
     },
-    onLoad: function () {
-        cc.log('MsgBase.onLoad');
+    onLoad: function () { 
         MgMsg.Inst().add( this.getClassName() );
     }      
 });

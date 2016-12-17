@@ -280,10 +280,8 @@ def createIfOrelif( txtFile,ifOrElif,name ):
 
 #===================================================================================================
 #创建get方法
-def createGetFunction(txtFile, nameListJson , uKey ):	
-	print'nameListJson%s'%nameListJson;
-	for key in json.loads(nameListJson):
-		print'key = %s'%key.capitalize();
+def createGetFunction(txtFile, nameListJson , uKey ):	 
+	for key in json.loads(nameListJson): 
 		Key = key.capitalize();
 		strtmp = 'pro.get{0} = function(id)'.format(Key);
 		txtFile.write( doNextOneLine( strtmp ));

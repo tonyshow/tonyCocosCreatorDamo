@@ -20,7 +20,7 @@ var MgMsg = (function(){
             //创建消息弹框
             //cb : 返回实例化的对象
             createObj:function( id , cb ){
-                var data = PlanApi.PlanScene.findById(id);
+                var data = PlanApi.PlanMsg.findById(id);
                 var path = data.path;
                 var order = data.order;
                 UtilGameObject.createGameObjectByPath(path,function(_obj){
