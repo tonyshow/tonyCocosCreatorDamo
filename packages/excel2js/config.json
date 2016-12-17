@@ -10,5 +10,13 @@
 	"Msg":
 	{
 		"key":"id"
-	} 
+	} ,
+	"GameWorld":
+	{
+		"key":"id"
+	},
+	"GameConfig":
+	{
+		"key":"id"
+	}
 }

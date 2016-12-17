@@ -273,8 +273,8 @@ def loadConfig():
 
 def createIfOrelif( txtFile,ifOrElif,name ):
 	txtFile.write('	{0}("{1}"==name)'.format(ifOrElif,name) );
-	txtFile.write(doNextOneLine('{'));
-	txtFile.write( doNextOneLine("		var {0} = require('./RowParser/{1}');".format(name,name)));
+	txtFile.write( doNextOneLine('{'));
+	txtFile.write( doNextOneLine("		var {0} = require('./../../MgData/PlanData/{1}');".format(name,name)));
 	txtFile.write( doNextOneLine('		return new {0}();'.format(name)));
 	txtFile.write( doNextOneLine('	}'));
 
@@ -291,6 +291,14 @@ def createGetFunction(txtFile, nameListJson , uKey ):
 		txtFile.write( doNextOneLine( strtmp ));
 		txtFile.write( doNextOneLine( '};' ));
 		 
+def createGameWorldFunction( txtFile ):
+	txtFile.write( doNextOneLine( "pro.getWorld = function( id ){" ) );
+	txtFile.write( doNextOneLine( "	var language = PlanApi.PlanGameConfig.getValue('language');" ) );
+	txtFile.write( doNextOneLine( "	var row = this.findRowById(id);" )  );
+	txtFile.write( doNextOneLine( "	var ncol = this.indexNames[language+'_world'];" )  );	
+	txtFile.write( doNextOneLine( "	var data = this.rowDataByRow(row);" ) );
+	txtFile.write( doNextOneLine( "	return data[ncol];" ) );
+	txtFile.write( doNextLine( "};" ) );
 
 #===================================================================================================	
 #创建dataApi.js文件 
@@ -354,8 +362,6 @@ def createJsFile(src , chinesName , dst ):
 	 
 	DataName = allWb.sheet_names()[0];   
 	
-	 
-
 	config = loadConfig();
 	uKey =  config[DataName]['key'];
 
@@ -371,7 +377,7 @@ def createJsFile(src , chinesName , dst ):
 	txtFile.read().decode("utf-8")
 	
 	#添加require文件
-	txtFile.write( "var {0}Base = require('../{1}Base'),\n".format(jsFileBf,jsFileBf) );
+	txtFile.write( "var {0}Base = require('./../../FrameWork/Utils/{1}Base'),\n".format(jsFileBf,jsFileBf) );
 	txtFile.write( "util = require('util');\n\n" );
 	  
 	className = jsFileBf + DataName;
@@ -410,7 +416,10 @@ def createJsFile(src , chinesName , dst ):
 	tmpStr = 'var pro = {0}.prototype;'.format(className);
 	txtFile.write(doNextLine(tmpStr));
 	
-	createGetFunction(txtFile,nameListJson,uKey);
+	if( 'PlanGameWorld' == className ):
+		createGameWorldFunction(txtFile);
+	else: 
+		createGetFunction(txtFile,nameListJson,uKey);
 
 	tmpStr = 'module.exports = {0};'.format(className);
 	txtFile.write(doNextLine(tmpStr));	

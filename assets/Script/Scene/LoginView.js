@@ -1,5 +1,4 @@
-var loginAndRegister = require('./../../doMain/LoginAndRegister');
-var MsgTextPrompt = require('./../Msg/MsgTextPrompt');
+var loginAndRegister = require('./../doMain/LoginAndRegister');
 
 var enumType = cc.Enum({
     register : 1,

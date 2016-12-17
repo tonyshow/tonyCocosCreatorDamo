@@ -28,5 +28,14 @@ MsgTextPrompt.create = function( text )
      }); 
 };
 
-module.exports = MsgTextPrompt;
+
+//创建弹框
+MsgTextPrompt.createByGameWorld = function( id )
+{ 
+     var text = PlanApi.PlanGameWorld.getWorld( id );
+     MsgTextPrompt.create(text);
+};
+
+
+
 window.MsgTextPrompt = MsgTextPrompt;

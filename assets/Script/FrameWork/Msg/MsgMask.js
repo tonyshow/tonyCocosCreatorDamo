@@ -1,5 +1,5 @@
 //var MsgBase = require('./MsgBase');
-cc.Class({
+window.MsgMask = cc.Class({
     extends: MsgBase,
     properties: {       
         maskLayout:{
@@ -25,6 +25,7 @@ cc.Class({
             var _node = this.maskLayout.node;
             if( Utils.IsNotNull( _node ) ){
                  _node.opacity = _opacity;    
+                 cc.log('设置蒙版透明度');
                  return;
             }
         }
@@ -34,6 +35,8 @@ cc.Class({
     //初始化
     onLoad : function(){
         this._super();
-        this.setOpacity( 200 );
+        var opacity = PlanApi.PlanGameConfig.getValue('maskOpacity');
+        this.setOpacity( opacity );
     }        
 });
+

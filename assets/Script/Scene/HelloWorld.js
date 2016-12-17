@@ -1,5 +1,3 @@
-var MsgTextPrompt = require('./../Msg/MsgTextPrompt');
-var MsgWait = require('./../Msg/MsgWait');  
 var _ = require('underscore');
 cc.Class({
     extends: cc.Component,

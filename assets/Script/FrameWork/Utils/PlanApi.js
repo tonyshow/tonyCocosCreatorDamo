@@ -5,24 +5,32 @@ var exp = module.exports = {};
 
 var modules = exp.modules = {};
 
-var names =['PlanCommonParameter', 'PlanScene', 'PlanMsg'];
+var names =['PlanCommonParameter', 'PlanScene', 'PlanGameWorld', 'PlanGameConfig', 'PlanMsg'];
 
 function create( name ){
 	if("PlanCommonParameter"==name){
-		var PlanCommonParameter = require('./RowParser/PlanCommonParameter');
+		var PlanCommonParameter = require('./../../MgData/PlanData/PlanCommonParameter');
 		return new PlanCommonParameter();
 	}
 	else if("PlanScene"==name){
-		var PlanScene = require('./RowParser/PlanScene');
+		var PlanScene = require('./../../MgData/PlanData/PlanScene');
 		return new PlanScene();
 	}
+	else if("PlanGameWorld"==name){
+		var PlanGameWorld = require('./../../MgData/PlanData/PlanGameWorld');
+		return new PlanGameWorld();
+	}
+	else if("PlanGameConfig"==name){
+		var PlanGameConfig = require('./../../MgData/PlanData/PlanGameConfig');
+		return new PlanGameConfig();
+	}
 	else if("PlanMsg"==name){
-		var PlanMsg = require('./RowParser/PlanMsg');
+		var PlanMsg = require('./../../MgData/PlanData/PlanMsg');
 		return new PlanMsg();
 	}
 }
 function doman(){   
-    for(var i = 0 ; i < 3 ; ++i ){
+    for(var i = 0 ; i < 5 ; ++i ){
         var name = names[i];
         Object.defineProperty(exp, name, {
             get: (function (name) {

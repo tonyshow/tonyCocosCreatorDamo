@@ -69,13 +69,10 @@
       },
       {
         "__id__": 19
-      },
-      {
-        "__id__": 20
       }
     ],
     "_prefab": {
-      "__id__": 21
+      "__id__": 20
     },
     "groupIndex": 0
   },
@@ -556,8 +553,6 @@
       "__id__": 1
     },
     "_enabled": true,
-    "order": 2100,
-    "isMask": false,
     "label": {
       "__id__": 12
     }
@@ -588,15 +583,6 @@
       }
     ],
     "playOnLoad": true
-  },
-  {
-    "__type__": "c044aJBAnpEDZCwos5gx1xC",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 1
-    },
-    "_enabled": true
   },
   {
     "__type__": "cc.PrefabInfo",

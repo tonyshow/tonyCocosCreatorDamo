@@ -1,4 +1,4 @@
-var PlanBase = require('../PlanBase'),
+var PlanBase = require('./../../FrameWork/Utils/PlanBase'),
 util = require('util');
 
 var PlanScene = function () {
