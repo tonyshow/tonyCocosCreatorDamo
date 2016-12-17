@@ -1,7 +1,7 @@
-var DataBase = require('../DataBase'),
+var PlanBase = require('../PlanBase'),
 util = require('util');
 
-var DataCommonParameter = function () {
+var PlanCommonParameter = function () {
 
 	var data = [["relive",2,"复活次数"]];
 
@@ -9,13 +9,13 @@ var DataCommonParameter = function () {
 
 	var indexNames = {"id":0,"value":1,"describe":2};
 
-	DataBase.call( this, data , indexs , indexNames );
+	PlanBase.call( this, data , indexs , indexNames );
 
 };
 
-util.inherits( DataCommonParameter, DataBase );
+util.inherits( PlanCommonParameter, PlanBase );
 
-var pro = DataCommonParameter.prototype;
+var pro = PlanCommonParameter.prototype;
 
 pro.getDescribe = function(id)
 {
@@ -32,5 +32,5 @@ pro.getValue = function(id)
 	var data = this.findById(id);
 	return data.value
 }
-module.exports = DataCommonParameter;
+module.exports = PlanCommonParameter;
 

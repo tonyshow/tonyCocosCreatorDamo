@@ -11,7 +11,7 @@ var MgScene = (function () {
         return { 
             gotoScene : function( EnumScene ){    
                 cc.log( 'EnumScene = %s',EnumScene); 
-                var data = DataApi.DataScene.findById( Number(EnumScene) ); 
+                var data = PlanApi.PlanScene.findById( Number(EnumScene) ); 
                 currSceneName = data.sceneName;
                 cc.log( 'currSceneName = %s',currSceneName);  
                 cc.director.loadScene( currSceneName );              

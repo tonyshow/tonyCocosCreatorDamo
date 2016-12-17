@@ -16,7 +16,7 @@
            setName : function(){
                cc.log('setName');
            }, 
-           
+                      
         }
     }
 

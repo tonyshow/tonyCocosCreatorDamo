@@ -1,7 +1,7 @@
-var DataBase = require('../DataBase'),
+var PlanBase = require('../PlanBase'),
 util = require('util');
 
-var DataScene = function () {
+var PlanScene = function () {
 
 	var data = [[1,"gameMain"],[2,"helloworld"]];
 
@@ -9,13 +9,13 @@ var DataScene = function () {
 
 	var indexNames = {"id":0,"sceneName":1};
 
-	DataBase.call( this, data , indexs , indexNames );
+	PlanBase.call( this, data , indexs , indexNames );
 
 };
 
-util.inherits( DataScene, DataBase );
+util.inherits( PlanScene, PlanBase );
 
-var pro = DataScene.prototype;
+var pro = PlanScene.prototype;
 
 pro.getScenename = function(id)
 {
@@ -27,5 +27,5 @@ pro.getId = function(id)
 	var data = this.findById(id);
 	return data.id
 }
-module.exports = DataScene;
+module.exports = PlanScene;
 

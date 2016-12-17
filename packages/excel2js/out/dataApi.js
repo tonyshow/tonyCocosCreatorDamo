@@ -5,20 +5,20 @@ var exp = module.exports = {};
 
 var modules = exp.modules = {};
 
-var names =['DataCommonParameter', 'DataScene', 'DataMsg'];
+var names =['PlanCommonParameter', 'PlanScene', 'PlanMsg'];
 
 function create( name ){
-	if("DataCommonParameter"==name){
-		var DataCommonParameter = require('./RowParser/DataCommonParameter');
-		return new DataCommonParameter();
+	if("PlanCommonParameter"==name){
+		var PlanCommonParameter = require('./RowParser/PlanCommonParameter');
+		return new PlanCommonParameter();
 	}
-	else if("DataScene"==name){
-		var DataScene = require('./RowParser/DataScene');
-		return new DataScene();
+	else if("PlanScene"==name){
+		var PlanScene = require('./RowParser/PlanScene');
+		return new PlanScene();
 	}
-	else if("DataMsg"==name){
-		var DataMsg = require('./RowParser/DataMsg');
-		return new DataMsg();
+	else if("PlanMsg"==name){
+		var PlanMsg = require('./RowParser/PlanMsg');
+		return new PlanMsg();
 	}
 }
 function doman(){   

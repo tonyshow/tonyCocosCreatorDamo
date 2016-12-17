@@ -16,7 +16,7 @@ dataTypeLine = 1    #����������
 indexLine = 2		#������������
 fileNameList=[];	#存储所以文件的名字
 jsonConfig=json.loads('{"Compose":{"uid":"needRoleQuality","conformityDatas":"newRoleId,rate"}}');
-
+jsFileBf = 'Plan'
 #===================================================================================================
 def isNumber(str):
 	try:
@@ -363,27 +363,25 @@ def createJsFile(src , chinesName , dst ):
 
 	if(config.get(DataName,False) == False ):
 		return;
-
-	 
-	
+ 
 	nameListJson = getIndexNames(allWb,DataName);
 
 	#-------------------------------------------------------------
 	#创建文件
-	fullTxtPath = outPath + '\\Data' + DataName + '.js';
+	fullTxtPath = outPath + '\\' +jsFileBf+ DataName + '.js';
 	txtFile = open(fullTxtPath, 'wb+')
 	txtFile.read().decode("utf-8")
 	
 	#添加require文件
-	txtFile.write( "var DataBase = require('../DataBase'),\n" );
+	txtFile.write( "var {0}Base = require('../{1}Base'),\n".format(jsFileBf,jsFileBf) );
 	txtFile.write( "util = require('util');\n\n" );
 	  
-	className = 'Data'+DataName;
+	className = jsFileBf + DataName;
 
-	print'chinesName = %s' %(chinesName);
-	print'className  = %s\n' %(className);
+	print'chinesName = %s' %( chinesName );
+	print'className  = %s\n' %( className );
 
-	fileNameList.append(className);
+	fileNameList.append( className );
 	tmpStr = 'var {0} = function () '.format(className);
 	txtFile.write(tmpStr);
 	txtFile.write('{\n\n');
@@ -402,13 +400,13 @@ def createJsFile(src , chinesName , dst ):
 	tmpStr = '	var indexNames = {0};'.format(nameListJson);
 	txtFile.write(doNextLine(tmpStr));
 	
-	tmpStr = '	DataBase.call( this, data , indexs , indexNames );';
+	tmpStr = '	{0}Base.call( this, data , indexs , indexNames );'.format(jsFileBf);
 	txtFile.write(doNextLine(tmpStr));
 	
 	tmpStr = '};';
 	txtFile.write(doNextLine(tmpStr));
 	
-	tmpStr = 'util.inherits( {0}, DataBase );'.format(className);
+	tmpStr = 'util.inherits( {0}, {1}Base );'.format(className,jsFileBf);
 	txtFile.write(doNextLine(tmpStr));
 			
 	tmpStr = 'var pro = {0}.prototype;'.format(className);

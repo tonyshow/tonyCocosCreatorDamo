@@ -1,7 +1,7 @@
-var DataBase = require('../DataBase'),
+var PlanBase = require('../PlanBase'),
 util = require('util');
 
-var DataMsg = function () {
+var PlanMsg = function () {
 
 	var data = [["MsgTextPrompt","prefabs/msg/MsgTextPrompt",3000],["MsgTestPrompt","prefabs/msg/MsgTestPrompt",3000]];
 
@@ -9,13 +9,13 @@ var DataMsg = function () {
 
 	var indexNames = {"id":0,"path":1,"order":2};
 
-	DataBase.call( this, data , indexs , indexNames );
+	PlanBase.call( this, data , indexs , indexNames );
 
 };
 
-util.inherits( DataMsg, DataBase );
+util.inherits( PlanMsg, PlanBase );
 
-var pro = DataMsg.prototype;
+var pro = PlanMsg.prototype;
 
 pro.getPath = function(id)
 {
@@ -32,5 +32,5 @@ pro.getOrder = function(id)
 	var data = this.findById(id);
 	return data.order
 }
-module.exports = DataMsg;
+module.exports = PlanMsg;
 

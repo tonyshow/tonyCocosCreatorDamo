@@ -13,7 +13,7 @@ exp.createGameObjectByPath = function(path , cb){
 
 /**
  * 通过消息弹框表id实例化对象
- * id:DataMsg.js文件的id
+ * id:PlanScene.js文件的id
  */
 exp.createGameObjectById = function( id , cb ){
     createGameObjectByPrefabId(id , cb)
