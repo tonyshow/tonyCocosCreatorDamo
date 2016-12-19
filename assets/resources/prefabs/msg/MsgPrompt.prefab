@@ -546,18 +546,6 @@
     "_N$horizontalDirection": 0
   },
   {
-    "__type__": "71d11XjpYtAipHvFPDSBW2K",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 1
-    },
-    "_enabled": true,
-    "label": {
-      "__id__": 12
-    }
-  },
-  {
     "__type__": "c044aJBAnpEDZCwos5gx1xC",
     "_name": "",
     "_objFlags": 0,
@@ -583,6 +571,18 @@
       }
     ],
     "playOnLoad": true
+  },
+  {
+    "__type__": "bbe68NGxghKRYnxlxoaxDOG",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "label": {
+      "__id__": 12
+    }
   },
   {
     "__type__": "cc.PrefabInfo",

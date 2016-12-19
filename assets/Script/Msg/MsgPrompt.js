@@ -17,12 +17,18 @@ var MsgPrompt = cc.Class({
     //设置文字
     setText: function ( _text ) {
         this.label.string = _text;
-    }  
+    },
+    //通过程序字表设置文本
+    setTextById  : function(id){
+       var txt = PlanApi.PlanGameWorld.getWorld(id);
+       this.setText(txt);
+    },
 });
 
 //创建弹框
 MsgPrompt.create = function( text )
 { 
+    cc.log('MsgPrompt.create');
      MgMsg.Inst().createComponent('MsgPrompt',function(compt){
           compt.setText(text); 
      }); 

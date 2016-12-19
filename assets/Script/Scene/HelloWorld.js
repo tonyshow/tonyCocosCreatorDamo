@@ -18,8 +18,8 @@ cc.Class({
         var sceneName =  MgScene.Inst().getCurrScene(); 
         var self = this; 
         self.button.node.on(cc.Node.EventType.TOUCH_START , function(){    
-           
-           MsgWait.create();
+         
+              MsgWait.create();
            // self.goGame();
         });
     },

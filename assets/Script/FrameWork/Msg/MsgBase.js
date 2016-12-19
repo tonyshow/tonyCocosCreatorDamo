@@ -4,8 +4,9 @@ var MsgBase = cc.Class({
         
     }, 
     //关闭弹框方法
-    close:function(){       
-       this.destroy();   
+    close:function(){  
+            
+       this.node.destroy();   
     },
     getClassName:function(){
         //子类实现

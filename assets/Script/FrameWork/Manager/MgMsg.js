@@ -36,6 +36,7 @@ var MgMsg = (function(){
             createComponent:function(id,cb){
                 this.createObj(id,function(obj){
                     var compt= obj.getComponent(id);
+                    cc.log('createComponent 创建消息弹框 id = %s',id);
                     if(!!cb){
                         cb(compt)
                     } 
