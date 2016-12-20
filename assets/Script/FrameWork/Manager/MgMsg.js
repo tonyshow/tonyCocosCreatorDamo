@@ -23,6 +23,8 @@ var MgMsg = (function(){
                 var data = PlanApi.PlanMsg.findById(id);
                 var path = data.path;
                 var order = data.order;
+
+                 cc.log('data = %s,path = %s,order = %s',data,path,order);
                 UtilGameObject.createGameObjectByPath(path,function(_obj){
                     cc.director.getScene().addChild( _obj , order ); 
                     if(!!cb){
@@ -34,6 +36,7 @@ var MgMsg = (function(){
             //创建消息弹框
             //cb：返回弹框主控制脚本 脚本名为第一个参数：id           
             createComponent:function(id,cb){
+                  cc.log('1createComponent 创建消息弹框 id = %s',id);
                 this.createObj(id,function(obj){
                     var compt= obj.getComponent(id);
                     cc.log('createComponent 创建消息弹框 id = %s',id);

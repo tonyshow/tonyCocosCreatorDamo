@@ -9,7 +9,12 @@ cc.Class({
 
     properties: {
        //按钮id
-       buttonId:0
+       buttonId:0,
+
+       gotoType : { 
+            default: EnumWindowType.NONE,
+            type : EnumWindowType,
+       }
     },
 
     // use this for initialization
@@ -20,6 +25,7 @@ cc.Class({
     //点击事件回调
     eveClick : function(){
 
-    },
-    
+    }, 
 });
+
+ 

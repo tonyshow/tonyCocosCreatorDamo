@@ -48,7 +48,7 @@ window.MsgWait = cc.Class({
     isWaitTimeOut : function(){
         var currData = new Date();  
         var tmpData =  currData.getTime() - this.startTime.getTime();      
-        return ( tmpData > this.waitTime*1000 );
+        return ( tmpData > this.waitTime );
     }
 });
 

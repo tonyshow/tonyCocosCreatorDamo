@@ -6,6 +6,7 @@ var exp = module.exports = {};
  * path : 预设体路径 ( example : 'prefabs/msg/MsgPrompt' )
  */
 exp.createGameObjectByPath = function(path , cb){
+    cc.log('this.createGameObjectByPath   path =  %s ',path);
     cc.loader.loadRes(path,function(err,prefab){          
           cb( cc.instantiate( prefab ) );  
     });

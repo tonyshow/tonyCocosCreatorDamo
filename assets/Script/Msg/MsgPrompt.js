@@ -39,6 +39,7 @@ MsgPrompt.create = function( text )
 MsgPrompt.createByGameWorld = function( id )
 { 
      var text = PlanApi.PlanGameWorld.getWorld( id );
+     cc.log(text);
      MsgPrompt.create(text);
 };
 
