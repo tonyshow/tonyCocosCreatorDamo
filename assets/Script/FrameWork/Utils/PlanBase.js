@@ -22,16 +22,17 @@ var pro = PlanBase.prototype;
  */
 pro.findById = function( id ){
     var toJson = {};
+    id = Utils.getString(id);
     var row= this.findRowById(id);
-    // if(!row){
-    //     //cc.log('not find row id = %s',id);
-    //     return toJson;
-    // }
+    if(!row){
+        cc.log('error ---- not find row id = %s',id);
+        return toJson;
+    }
     var rowData = this.rowDataByRow(row);
-    // if(!rowData){
-    //     //cc.log('not find rowData : row = %s , id = %s',row,id);
-    //     return toJson;
-    // }   
+    if(!rowData){
+        cc.log('error ---- not find rowData : row = %s , id = %s',row,id);
+        return toJson;
+    }   
     _.each(this.indexNames,function( index,name ){
         toJson[name]=rowData[index];
     });   
@@ -50,7 +51,7 @@ pro.rowDataByRow = function( row ){
  * 通过id找到行
  */
 pro.findRowById = function( id ){
-    // cc.log(' this.indexs %j  ---- not find row id = %s',JSON.stringify(this.indexs) ,id );
+     cc.log(' this.indexs %j  ---- not find row id = %s',JSON.stringify(this.indexs) ,id );
     var row = this.indexs[id];
     return row;
 };

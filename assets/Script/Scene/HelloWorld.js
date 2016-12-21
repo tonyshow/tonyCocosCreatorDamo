@@ -1,4 +1,5 @@
 var _ = require('underscore');
+var MsgDialog = require('./../Msg/MsgDialog');
 cc.Class({
     extends: cc.Component,
     properties: { 
@@ -19,15 +20,7 @@ cc.Class({
         var self = this; 
         self.button.node.on(cc.Node.EventType.TOUCH_START , function(){    
              cc.log('self.button.buttonId = %s',self.button.buttonId);
-                MsgWait.create();
-                // UtilGameObject.createGameObjectByPath('prefabs/msg/MsgPrompt',function(_obj){
-                //     cc.director.getScene().addChild( _obj , 1 ); 
-                //     if(!!cb){
-                //         cb( _obj );
-                //     }                    
-                // });
-             // MsgPrompt.createByGameWorld('com_timeout');
-              // self.goGame();  
+             MsgDialog.create();
         });
     },
 

@@ -18,5 +18,9 @@
 	"GameConfig":
 	{
 		"key":"id"
-	}
+	},
+	"Dialog":
+	{
+		"key":"id"
+	}  
 }

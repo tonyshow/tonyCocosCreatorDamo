@@ -5,7 +5,7 @@ var exp = module.exports = {};
 
 var modules = exp.modules = {};
 
-var names =['PlanCommonParameter', 'PlanScene', 'PlanGameWorld', 'PlanGameConfig', 'PlanMsg'];
+var names =['PlanCommonParameter', 'PlanScene', 'PlanGameWorld', 'PlanDialog', 'PlanGameConfig', 'PlanMsg'];
 
 function create( name ){
 	if("PlanCommonParameter"==name){
@@ -20,6 +20,10 @@ function create( name ){
 		var PlanGameWorld = require('./../../MgData/PlanData/PlanGameWorld');
 		return new PlanGameWorld();
 	}
+	else if("PlanDialog"==name){
+		var PlanDialog = require('./../../MgData/PlanData/PlanDialog');
+		return new PlanDialog();
+	}
 	else if("PlanGameConfig"==name){
 		var PlanGameConfig = require('./../../MgData/PlanData/PlanGameConfig');
 		return new PlanGameConfig();
@@ -30,7 +34,7 @@ function create( name ){
 	}
 }
 function doman(){   
-    for(var i = 0 ; i < 5 ; ++i ){
+    for(var i = 0 ; i < 6 ; ++i ){
         var name = names[i];
         Object.defineProperty(exp, name, {
             get: (function (name) {

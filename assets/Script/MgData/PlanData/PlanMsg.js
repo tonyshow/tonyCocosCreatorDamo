@@ -3,9 +3,9 @@ util = require('util');
 
 var PlanMsg = function () {
 
-	var data = [["MsgPrompt","prefabs/msg/MsgPrompt",3000],["MsgWait","prefabs/msg/MsgWait",3000]];
+	var data = [["MsgPrompt","MsgPrompt",3000],["MsgWait","prefabs/msg/MsgWait",3000],["MsgDialog","prefabs/msg/MsgDialog",3001]];
 
-	var indexs = {"MsgPrompt":0,"MsgWait":1};
+	var indexs = {"MsgPrompt":0,"MsgWait":1,"MsgDialog":2};
 
 	var indexNames = {"id":0,"path":1,"order":2};
 

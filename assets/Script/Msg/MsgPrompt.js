@@ -27,8 +27,7 @@ var MsgPrompt = cc.Class({
 
 //创建弹框
 MsgPrompt.create = function( text )
-{ 
-    cc.log('MsgPrompt.create');
+{  
      MgMsg.Inst().createComponent('MsgPrompt',function(compt){
           compt.setText(text); 
      }); 
