@@ -1,4 +1,3 @@
-//var MsgBase = require('./MsgBase');
 window.MsgMask = cc.Class({
     extends: MsgBase,
     properties: {       

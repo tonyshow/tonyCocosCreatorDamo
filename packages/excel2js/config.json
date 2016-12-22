@@ -22,5 +22,13 @@
 	"Dialog":
 	{
 		"key":"id"
-	}  
+	} ,
+	"Card":
+	{
+		"key":"id"
+	},  
+	"Prefabs":
+	{
+		"key":"id"
+	}   
 }

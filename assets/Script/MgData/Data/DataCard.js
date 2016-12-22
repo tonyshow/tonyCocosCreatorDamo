@@ -7,8 +7,13 @@ var util = require('util'),
     _  = require('underscore'),
     DataBase= require('./DataBase');
 
-var DataCard = function(){
-    EventEmitter.call(this);    
+/**
+ * id : 卡牌唯一id  1-54
+ */
+var DataCard = function( id ){
+    EventEmitter.call(this);  
+    this.id = id; 
+    this.bindPlanData();            
 } 
 
 util.inherits(DataCard,DataBase);
@@ -21,5 +26,33 @@ var pro = DataCard.prototype ;
 pro.clear = function(){
     this.pos = 0;
 };
+
+/**
+ * 绑定策划表数据
+ */
+pro.bindPlanData = function(){
+    this.planData = PlanApi.PlanCard.findById( this.id );
+};
  
+/**
+ * 获取牌的花色
+ */
+pro.getType = function(){
+    return this.planData.type;
+};
+
+/**
+ * 过去卡牌的数量
+ */
+pro.getNumber = function(){
+    return this.planData.number;
+};
+
+/**
+ * 获取伤害值
+ */
+pro.getHurt = function(){
+    return this.getType()*10 + this.getNumber();
+};
+
 module.exports = DataCard;
