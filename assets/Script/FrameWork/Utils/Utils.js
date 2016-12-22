@@ -9,7 +9,7 @@ exp.IsNotNull = function( _value ){
 };
 
 exp.getString = function( value ){
-    if(!isNaN(value)){
+    if(!Number(value)){
         return value.toString();
     }else{
        return value;

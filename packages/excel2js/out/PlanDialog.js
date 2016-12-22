@@ -3,7 +3,7 @@ util = require('util');
 
 var PlanDialog = function () {
 
-	var data = [[1,2,1,"你想干嘛"],[2,3,1,"你猜猜咯"],[3,-1,1,"什么鬼"]];
+	var data = [[1,2,1,"dialog_1_1"],[2,3,1,"dialog_1_2"],[3,-1,1,"dialog_1_3"]];
 
 	var indexs = {"1":0,"2":1,"3":2};
 

@@ -3,9 +3,9 @@ util = require('util');
 
 var PlanGameWorld = function () {
 
-	var data = [["com_timeout","连接超时"]];
+	var data = [["com_timeout","连接超时"],["dialog_1_1","你想干嘛"],["dialog_1_2","你猜猜咯"],["dialog_1_3","什么鬼"]];
 
-	var indexs = {"com_timeout":0};
+	var indexs = {"com_timeout":0,"dialog_1_1":1,"dialog_1_2":2,"dialog_1_3":3};
 
 	var indexNames = {"id":0,"cht_world":1};
 
