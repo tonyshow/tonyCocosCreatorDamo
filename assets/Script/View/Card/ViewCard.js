@@ -2,24 +2,21 @@ var ViewCard = cc.Class({
     extends: ViewCardBase,
 
     properties: {
-        
+
     },
 
     // use this for initialization
     onLoad: function () {
         this._super();
-        var DataCard = require('./../MgData/Data/DataCard');
-
-        cc.log('ViewCard.onLoad = %s',this.id  );
+        var DataCard = require('./../../MgData/Data/DataCard'); 
         this.dataCard = new DataCard(  this.id  );
-        this.refreshUI();
+        this.refreshUI(); 
     }, 
 
-    setId : function( id ){ 
-        cc.log('ViewCard.setId = %s',id );
+    setId : function( id ){  
         this.id = id;
-    },
+    }, 
 
-});
+}); 
 
 module.exports = ViewCard;

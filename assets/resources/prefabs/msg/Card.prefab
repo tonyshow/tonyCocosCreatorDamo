@@ -15,9 +15,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 241,
-      "g": 0,
-      "b": 0,
+      "r": 214,
+      "g": 214,
+      "b": 214,
       "a": 255
     },
     "_cascadeOpacityEnabled": true,
@@ -69,10 +69,19 @@
       },
       {
         "__id__": 16
+      },
+      {
+        "__id__": 17
+      },
+      {
+        "__id__": 18
+      },
+      {
+        "__id__": 19
       }
     ],
     "_prefab": {
-      "__id__": 17
+      "__id__": 21
     },
     "groupIndex": 0
   },
@@ -202,9 +211,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
+      "r": 0,
+      "g": 68,
+      "b": 213,
       "a": 255
     },
     "_cascadeOpacityEnabled": true,
@@ -331,8 +340,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 22.25,
-      "height": 40
+      "width": 11.12,
+      "height": 20
     },
     "_children": [],
     "_rotationX": 0,
@@ -341,8 +350,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -34.754999999999995,
-      "y": 55
+      "x": -49,
+      "y": -61
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -374,9 +383,9 @@
     },
     "_enabled": true,
     "_useOriginalSize": false,
-    "_actualFontSize": 40,
-    "_fontSize": 40,
-    "_lineHeight": 40,
+    "_actualFontSize": 20,
+    "_fontSize": 20,
+    "_lineHeight": 20,
     "_enableWrapText": true,
     "_N$file": null,
     "_isSystemFontUsed": true,
@@ -395,9 +404,9 @@
     "_enabled": true,
     "isAlignOnce": true,
     "_alignFlags": 9,
-    "_left": 11.120000000000001,
+    "_left": 2.439999999999997,
     "_right": 0,
-    "_top": 0,
+    "_top": 126,
     "_bottom": 0,
     "_verticalCenter": 0,
     "_horizontalCenter": 0,
@@ -495,6 +504,94 @@
     "lable_number": {
       "__id__": 7
     }
+  },
+  {
+    "__type__": "33eee+Go8NLvps73kamr5GR",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": false,
+    "fightCardAnim": {
+      "__id__": 18
+    }
+  },
+  {
+    "__type__": "99403CelmdIiqigSfuB5MyB",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": false,
+    "jumpHeight": 50,
+    "moveHeight": 50
+  },
+  {
+    "__type__": "5e343Ua1OpL2pj9zd5v1lqe",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "transition": 1,
+    "pressedColor": {
+      "__type__": "cc.Color",
+      "r": 211,
+      "g": 211,
+      "b": 211,
+      "a": 255
+    },
+    "hoverColor": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "duration": 0.1,
+    "zoomScale": 1.2,
+    "pressedSprite": null,
+    "hoverSprite": null,
+    "clickEvents": [
+      {
+        "__id__": 20
+      }
+    ],
+    "_N$interactable": true,
+    "_N$enableAutoGrayEffect": false,
+    "_N$normalColor": {
+      "__type__": "cc.Color",
+      "r": 214,
+      "g": 214,
+      "b": 214,
+      "a": 255
+    },
+    "_N$disabledColor": {
+      "__type__": "cc.Color",
+      "r": 124,
+      "g": 124,
+      "b": 124,
+      "a": 255
+    },
+    "_N$normalSprite": null,
+    "_N$disabledSprite": null,
+    "_N$target": {
+      "__id__": 1
+    },
+    "buttonId": 0,
+    "gotoType": 0
+  },
+  {
+    "__type__": "cc.ClickEvent",
+    "target": {
+      "__id__": 1
+    },
+    "component": "FightCardState",
+    "handler": "sendSwitchFightCardState",
+    "customEventData": ""
   },
   {
     "__type__": "cc.PrefabInfo",

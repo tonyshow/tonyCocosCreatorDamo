@@ -28,11 +28,12 @@ var FightDirector = cc.Class({
 
     // use this for initialization
     onLoad: function () {
-
+        this.outFightPower = Consts.OutFightPower.NONE;
     }, 
 
     //开始
     startFight : function(){
+        this.outFightPower = Consts.OutFightPower.DIRCETOR;
         var self = this;
         for( var i = 1; i <= 5 ; ++i){
             this.cardCtr.sendGetCardId(  function(id){

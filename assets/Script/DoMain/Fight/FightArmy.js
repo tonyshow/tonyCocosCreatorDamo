@@ -4,6 +4,7 @@
  * 时间：2016-12-22
  */
 var _ = require('underscore');
+var Consts = require('./../../../Shared/Consts');
 var FightArmy = cc.Class({
     extends: cc.Component,
 
@@ -23,6 +24,7 @@ var FightArmy = cc.Class({
     // use this for initialization
     onLoad: function () {
         this.cardObjDic = [];
+        this.outFightPower = Consts.OutFightPower.NONE;
     },
 
     createCardObj : function( id ){ 
@@ -34,6 +36,10 @@ var FightArmy = cc.Class({
             self.cardObjDic.push(obj);
         });
     },
+
+    refreshOutFightPower:function(){
+        
+    }
 });
 
 module.exports = FightArmy;

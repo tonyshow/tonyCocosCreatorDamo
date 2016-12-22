@@ -36,11 +36,10 @@ var FightCardFactory = cc.Class({
     //从仓库移除一张卡牌
     removeByPos : function( pos ){
         var id = this.cards[pos];    
-        this.cards.splice(pos,1);
-        cc.log('移除之后仓库的卡牌 %j',JSON.stringify(this.cards) );       
+        this.cards.splice(pos,1);     
         return id;
     },
-
+ 
     //获取卡牌数量
     getCnt : function(){
         return _.size( this.cards );

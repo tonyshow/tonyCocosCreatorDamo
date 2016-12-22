@@ -17,6 +17,10 @@ var MgScene = (function () {
                 cc.director.loadScene( currSceneName );              
             }, 
 
+            gotoSceneByName : function(name){
+                cc.director.loadScene( name ); 
+            },
+
             getCurrScene :function(){
                  return currSceneName;
             },

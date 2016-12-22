@@ -28,17 +28,16 @@ window.ViewCardBase= cc.Class({
     //刷新UI
     //id : 卡牌表id
     refreshUI:function(){
-         cc.log('----refreshUI----');
          this.setTypeUI();
          this.setNumber();
     },
 
     setTypeUI:function(){
-        this.lable_type.string = this.dataCard.getType();
+        var cardTypeText = PlanApi.PlanGameWorld.getWorld( 'card_type_'+ this.dataCard.getType()); 
+        this.lable_type.string =cardTypeText;
     },
 
     setNumber:function(){
-        cc.log('this.dataCard.getNumber() = %s',this.dataCard.getNumber());
         this.lable_number.string = this.dataCard.getNumber();
     }  
 }); 

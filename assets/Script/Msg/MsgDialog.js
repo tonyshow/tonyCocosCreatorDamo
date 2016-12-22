@@ -29,6 +29,7 @@ var MsgDialog  = cc.Class({
     nextStep:function(){ 
         if( -1==this.currId){
              this.close();
+             MgScene.Inst().gotoSceneByName('fight');
              return false;
         }
         var worldId =  PlanApi.PlanDialog.getDialogtxt(this.currId);
