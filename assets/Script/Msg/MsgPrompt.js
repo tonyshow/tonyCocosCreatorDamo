@@ -34,11 +34,12 @@ MsgPrompt.create = function( text )
 };
 
 
-//创建弹框
+/*创建弹框
+ *id : 程序字表id
+ */
 MsgPrompt.createByGameWorld = function( id )
 { 
      var text = PlanApi.PlanGameWorld.getWorld( id );
-     cc.log(text);
      MsgPrompt.create(text);
 };
 

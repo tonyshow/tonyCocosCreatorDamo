@@ -8,7 +8,7 @@ var ViewCard = cc.Class({
     // use this for initialization
     onLoad: function () {
         this._super();
-        var DataCard = require('./../../MgData/Data/DataCard'); 
+        var DataCard = require('./../../../MgData/Data/DataCard'); 
         this.dataCard = new DataCard(  this.id  );
         this.refreshUI(); 
     }, 

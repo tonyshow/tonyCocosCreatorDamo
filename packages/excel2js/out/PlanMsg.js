@@ -3,7 +3,7 @@ util = require('util');
 
 var PlanMsg = function () {
 
-	var data = [["MsgPrompt","MsgPrompt",3000],["MsgWait","prefabs/msg/MsgWait",3000],["MsgDialog","prefabs/msg/MsgDialog",3001]];
+	var data = [["MsgPrompt","prefabs/msg/MsgPrompt",3000],["MsgWait","prefabs/msg/MsgWait",3000],["MsgDialog","prefabs/msg/MsgDialog",3001]];
 
 	var indexs = {"MsgPrompt":0,"MsgWait":1,"MsgDialog":2};
 

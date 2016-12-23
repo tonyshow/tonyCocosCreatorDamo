@@ -9,22 +9,23 @@ var FightArmy = cc.Class({
     extends: cc.Component,
 
     properties: {
-        // foo: {
-        //    default: null,      // The default value will be used only when the component attaching
-        //                           to a node for the first time
-        //    url: cc.Texture2D,  // optional, default is typeof default
-        //    serializable: true, // optional, default is true
-        //    visible: true,      // optional, default is true
-        //    displayName: 'Foo', // optional
-        //    readonly: false,    // optional, default is false
-        // },
-        // ...
+        //战队类型 （敌方、我方）
+        enumFightArmy : Consts.EnumFightArmy.MINE
     },
 
     // use this for initialization
     onLoad: function () {
-        this.cardObjDic = [];
-        this.outFightPower = Consts.OutFightPower.NONE;
+        this.cardObjDic = [];        
+        this.mySelfOutFightPower = Consts.OutFightPower.NONE;//我的出站标记
+    },
+
+    setEnumArmy:function( _type ){
+        this.enumFightArmy = _type;
+        if(this.enumFightArmy== Consts.EnumFightArmy.ENEMY){
+            this.mySelfOutFightPower =  Consts.OutFightPower.ENEMY;
+        }else if(this.enumFightArmy== Consts.EnumFightArmy.MINE){
+            this.mySelfOutFightPower =  Consts.OutFightPower.MINE;
+        }
     },
 
     createCardObj : function( id ){ 

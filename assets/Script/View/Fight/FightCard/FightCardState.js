@@ -1,4 +1,9 @@
-var Consts = require('./../../../Shared/Consts');
+/**
+ * 功能：战场卡的状态
+ * 作者：tony
+ * 时间：2016-12-22
+ */
+var Consts = require('./../../../../Shared/Consts');
 var FightCardAnim = require('./FightCardAnim');
 cc.Class({
     extends: cc.Component, 

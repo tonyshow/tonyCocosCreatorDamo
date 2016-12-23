@@ -1,4 +1,3 @@
-var ViewCard = 
 cc.Class({
     extends: cc.Component,
 
