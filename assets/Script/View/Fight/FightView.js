@@ -1,5 +1,5 @@
 /**
- * 功能：战场UI
+ * 功能：战场界面显示、界面操作部分
  * 作者：tony
  * 时间：2016-12-22
  */
@@ -29,6 +29,14 @@ var FightView = cc.Class({
         btnHandler:{
             default : null,
             type:cc.Layout
+        },
+        director : {
+            default:null,
+            type:cc.Node
+        },
+        labelPower:{
+            default : null,
+            type:cc.Label,
         }
     },
 
@@ -87,7 +95,18 @@ var FightView = cc.Class({
         }else if(Consts.FightBtnGroup.END == fightBtnGroup){
             this.btnEnd.node.active = true;
         }
-    }
+    },
+
+    refreshLabelPower : function( fightPower ){
+        var gameWorld = '';
+        if( Consts.OutFightPower.ENEMY == fightPower ){
+            gameWorld  = PlanApi.PlanGameWorld.getWorld('ViewFight_enemyPower');
+        }else if( Consts.OutFightPower.MINE == fightPower ){
+            gameWorld  = PlanApi.PlanGameWorld.getWorld('ViewFight_minePower');
+        }
+        this.labelPower.string = gameWorld;
+        cc.log('gameWorld = %s  fightPower = %s',gameWorld , fightPower);
+    } 
 });
 
 module.exports = FightView;

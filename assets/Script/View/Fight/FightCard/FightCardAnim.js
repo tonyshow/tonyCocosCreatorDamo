@@ -10,7 +10,7 @@ cc.Class({
     properties: {
         jumpHeight : 50,
         moveHeight : 50,
-        atkHeight  : 100
+        atkHeight  : 1000
     },
 
     // use this for initialization
@@ -28,11 +28,15 @@ cc.Class({
         }else if(Consts.FightCardState.CHOICE == fightCardState){
             actionOneStep = cc.jumpBy(0.5, cc.p(0,this.moveHeight), this.jumpHeight, 1);
         }else if(Consts.FightCardState.Fighting == fightCardState){
-            actionOneStep = cc.jumpBy(0.5, cc.p(0,this.atkHeight), 0, 1);            
+            actionOneStep = cc.jumpBy(1.0, cc.p(0,this.atkHeight), 0, 1);            
         }
-
         if( Utils.IsNotNull(actionOneStep) ){
             this.node.runAction(actionOneStep);  
         }   
+    },
+
+    doEnter:function( endPos ){
+        var actionOneStep = cc.jumpTo(0.5,endPos, 200, 1);
+        this.node.runAction(actionOneStep);  
     }
 });

@@ -10,13 +10,21 @@ var FightArmy = cc.Class({
 
     properties: {
         //战队类型 （敌方、我方）
-        enumFightArmy : Consts.EnumFightArmy.MINE
+        enumFightArmy : {
+            default:Consts.EnumFightArmy.MINE,
+            visible : false,
+        },
+        director : {
+            default:null,
+            type:cc.Node
+        }
     },
 
     // use this for initialization
     onLoad: function () {
         this.cardObjDic = [];        
         this.mySelfOutFightPower = Consts.OutFightPower.NONE;//我的出站标记
+        this.fightDirector = this.director.getComponent('FightDirector');         
     },
 
     setEnumArmy:function( _type ){
@@ -32,14 +40,38 @@ var FightArmy = cc.Class({
         var self = this;
         var prefabPath = PlanApi.PlanPrefabs.getPath('common_card');
         UtilGameObject.createAddparent( prefabPath , self.node ,function(obj){            
-            obj.setPosition(-300+130*_.size(self.cardObjDic),1);
+            obj.setPosition(0,-300);
             obj.getComponent('ViewCard').setId( id );
-            self.cardObjDic.push(obj);
+
+            var anim = obj.getComponent('FightCardAnim');
+            anim.doEnter(cc.p(-300+130*_.size(self.cardObjDic),1) );
+
+            self.cardObjDic.push(obj);            
         });
     },
 
-    refreshOutFightPower:function(){
-        
+  
+
+    refreshOutFightPower:function(value){ 
+        this.mySelfOutFightPower = value;
+    },    
+
+    isFightPower:function( _v ){ 
+        return _v == this.mySelfOutFightPower;
+    },
+    //攻击
+    doAtk:function(){ 
+        var self = this;
+        var length =    _.size( this.cardObjDic );
+        for( var i = 0 ; i<length;++i ){
+            var anim = this.cardObjDic[i].getComponent('FightCardAnim');
+            anim.doAnim( Consts.FightCardState.Fighting);   
+        }
+        this.cardObjDic = [];
+
+        this.fightDirector.sendCreeps(5 ,  function( id ){
+            self.createCardObj( id );
+        });
     }
 });
 

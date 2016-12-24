@@ -26,5 +26,9 @@ module.exports = {
         START:2,
         GAME:3,
         END:4
+    },
+    
+    FightThinkAI:{
+        pass:1
     }
 }
