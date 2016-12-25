@@ -29,6 +29,7 @@ module.exports = {
     },
     
     FightThinkAI:{
-        pass:1
+        pass:1,
+        atk:2,//攻击
     }
 }

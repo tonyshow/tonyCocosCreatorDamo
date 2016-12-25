@@ -11,11 +11,12 @@ cc.Class({
     },
  
     thinkAI : function( cb ){
-        var delay = cc.delayTime(_.random(2,5));
+        var delay = cc.delayTime( _.random(10,30) * 0.1 ) ;
         this.cb = cb;
         var self = this;
         var finish = cc.callFunc(function(){
-             self.cb(Consts.FightThinkAI.pass);
+            var tmp =  _.random(1,2);//Consts.FightThinkAI.pass
+            self.cb(tmp);
         }, this);
 
         var seq = cc.sequence(delay, finish);      

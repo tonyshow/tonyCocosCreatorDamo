@@ -3,9 +3,9 @@ util = require('util');
 
 var PlanPrefabs = function () {
 
-	var data = [["common_card","prefabs/msg/Card"]];
+	var data = [["common_card","prefabs/msg/Card"],["common_cardEnemy","prefabs/msg/CardEnemy"]];
 
-	var indexs = {"common_card":0};
+	var indexs = {"common_card":0,"common_cardEnemy":1};
 
 	var indexNames = {"id":0,"path":1};
 

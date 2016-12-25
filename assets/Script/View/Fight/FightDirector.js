@@ -74,12 +74,14 @@ var FightDirector = cc.Class({
             } 
             
             self.mine.doAtk();
+            self.switchOutFightPower(); 
         }); 
  
         this.enemy.registerAction( function( code ){             
              if( Consts.FightThinkAI.pass == code ){
-                 self.switchOutFightPower();
+                
              }
+             self.switchOutFightPower();
         });
     }, 
 
@@ -129,7 +131,7 @@ var FightDirector = cc.Class({
         this.fightView.refreshLabelPower( this.currOutFightPower );
     },
 
-    //向导演请求补兵
+    //补兵请求 （外部调用）
     sendCreeps : function( num , cb ){ 
        for(var i = 0 ; i < num ;++i){
            this.cardCtr.sendGetCardId(  function(id){ 

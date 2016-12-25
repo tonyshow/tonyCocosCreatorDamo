@@ -1689,7 +1689,8 @@
     "enumFightArmy": 1,
     "director": {
       "__id__": 47
-    }
+    },
+    "cardXToX": 130
   },
   {
     "__type__": "cc.Node",
@@ -1901,6 +1902,7 @@
     "director": {
       "__id__": 47
     },
+    "cardXToX": 130,
     "fightEnemyAI": {
       "__id__": 58
     }
