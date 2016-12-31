@@ -18,7 +18,7 @@ var FightArmy = cc.Class({
         var self = this;
         var prefabPath = PlanApi.PlanPrefabs.getPath('common_card');
         UtilGameObject.createAddparent( prefabPath , self.node ,function(obj){            
-            obj.setPosition(0,-300);
+            obj.setPosition(1000,-300);
             obj.getComponent('ViewCard').setId( id ); 
             var anim = obj.getComponent('FightCardAnim');
             anim.doEnter(cc.p(-300+self.cardXToX*_.size(self.cardObjDic),1) ); 

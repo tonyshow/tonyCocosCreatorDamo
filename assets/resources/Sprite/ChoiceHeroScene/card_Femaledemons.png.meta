@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "62dfff66-2e0b-4615-943b-4bd95b2b36b5",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "card_Femaledemons": {
+      "ver": "1.0.3",
+      "uuid": "8117f189-4f59-40be-a703-401a3ad1a956",
+      "rawTextureUuid": "62dfff66-2e0b-4615-943b-4bd95b2b36b5",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 469,
+      "height": 499,
+      "rawWidth": 469,
+      "rawHeight": 499,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
