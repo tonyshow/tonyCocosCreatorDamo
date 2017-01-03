@@ -18,6 +18,7 @@ var pro = FightCardData.prototype ;
 
 pro.setCardObject = function( _v ){
     this.cardObj = _v;
+    return this;
 };
 
 /**
@@ -32,6 +33,7 @@ pro.getId = function(){
  */
 pro.setViewCard = function( _v ){
     this.ViewCard = _v;
+    return this;
 };
 
 /**
@@ -39,6 +41,7 @@ pro.setViewCard = function( _v ){
  */
 pro.setFightCardAnim = function( _v ){
     this.FightCardAnim = _v;
+    return this;
 };
 
 /**
@@ -46,6 +49,7 @@ pro.setFightCardAnim = function( _v ){
  */
 pro.setFightCardState = function( _v ){
     this.FightCardState = _v;
+    return this;
 };
 
 /**
@@ -60,9 +64,11 @@ pro.isCanAtk = function(){
  */
 pro.doAnim = function( fightCardState,endCb ){
     this.FightCardAnim.doAnim( fightCardState,endCb );
+    return this;
 }
 
 pro.doRefreshPos = function( _v ){
     this.FightCardAnim.doRefreshPos(  _v );
+    return this;
 }
 module.exports = FightCardData;

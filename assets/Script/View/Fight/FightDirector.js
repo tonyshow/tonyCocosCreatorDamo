@@ -134,6 +134,7 @@ var FightDirector = cc.Class({
 
     //补兵请求 （外部调用）
     sendCreeps : function( num , cb ){ 
+       cc.log('导演下发卡牌数量 num :　%s',num);
        for(var i = 0 ; i < num ;++i){
            this.cardCtr.sendGetCardId(  function(id){ 
               if( id > 0 ){

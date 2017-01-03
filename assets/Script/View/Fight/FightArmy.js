@@ -33,16 +33,14 @@ var FightArmy = cc.Class({
         var self = this;
 
         _.map( self.cardInfoList , function( _fightCardData , id ){ 
-            if( _fightCardData.isCanAtk() ){
+            if( !_fightCardData && _fightCardData.isCanAtk() ){
                 _fightCardData.doAnim( Consts.FightCardState.Fighting );
                 self.remove( id );
             } 
         }); 
         
-       
         self.refreshAllCardPos();
 
-         cc.log('--攻击之后的卡牌数量 : %s ',self.getCardNum() );
         self.fightDirector.sendCreeps( self.cardMaxCnt -  self.getCardNum() ,  function( id ){
             cc.log('请求补牌 = %s',id);
             self.addNewCard( id );
@@ -54,7 +52,7 @@ var FightArmy = cc.Class({
     * id : 
     */
     addNewCard:function( id ){
-        this._super(id);
+       var tmp = this._super(id);
         var self = this;
         var prefabPath = PlanApi.PlanPrefabs.getPath('common_card'); 
         var currCardNum = self.getCardNum();
@@ -64,12 +62,8 @@ var FightArmy = cc.Class({
             _ViewCard.setId( id );
             var _FightCardAnim = obj.getComponent('FightCardAnim'); 
             _FightCardAnim.doEnter(cc.p(-300+self.cardXToX*currCardNum,1) );   
-            var _FightCardState = obj.getComponent('FightCardState'); 
-
-            self.cardInfoList[id].setCardObject( obj );    
-            self.cardInfoList[id].setViewCard( _ViewCard );
-            self.cardInfoList[id].setFightCardAnim( _FightCardAnim ); 
-            self.cardInfoList[id].setFightCardState( _FightCardState );             
+            var _FightCardState = obj.getComponent('FightCardState');  
+            tmp.setCardObject( obj ).setViewCard( _ViewCard ).setFightCardAnim( _FightCardAnim ).setFightCardState( _FightCardState );  
         });       
     }
 });

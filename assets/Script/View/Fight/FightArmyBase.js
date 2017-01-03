@@ -34,7 +34,7 @@ cc.Class({
         this.mySelfOutFightPower = Consts.OutFightPower.NONE;//我的出站标记
         this.fightDirector = this.director.getComponent('FightDirector');   
         this.cardMaxCnt = 5; 
-        this.cardInfoList = {};//卡牌信息    
+        this.cardInfoList = [];//卡牌信息    
     }, 
            
 
@@ -43,6 +43,12 @@ cc.Class({
      */
     refreshAllCardPos:function(){
         this.cardInfoList = _.compact(this.cardInfoList);
+
+        _.map( this.cardInfoList , function( _fightCardData , id ){ 
+            cc.log( 'id = %s  ,_fightCardData = %s  ',id ,_fightCardData)
+        }); 
+
+        cc.log('base - refreshAllCardPos = %s ', _.size(this.cardInfoList) );
     },
     
     refreshOutFightPower:function(value){ 
@@ -64,15 +70,19 @@ cc.Class({
     */
     addNewCard:function( id ){ 
         var fightCardData =  new FightCardData(id);
-        this.cardInfoList[id] = fightCardData;
+        this.cardInfoList.push( {id:id  ,fightCardData:fightCardData } ); 
+        cc.log('添加之后的数量addNewCard（） = %s ', _.size(this.cardInfoList) );
+        return fightCardData;
     },
-
+    
     /**
      * 移除一个已出站的卡牌
      */
-    remove:function(id){
-        this.cardInfoList[id] = null;
-        cc.log('移除之后的数量 : %s ' , this.getCardNum() );
+    remove:function(id){ 
+        this.cardInfoList = _.filter(this.cardInfoList,function(data){
+            return data.key != id;
+        });
+        cc.log('移除之后的数量 : %s ' , _.size(this.cardInfoList) );
     },
 
     getCardNum:function(){

@@ -50,7 +50,7 @@ cc.Class({
             var _ViewCard = obj.getComponent('ViewCard');
             _ViewCard.setId( id );
             var _FightCardAnim = obj.getComponent('FightCardAnimEnemy'); 
-            _FightCardAnim.doEnter(cc.p(-300+self.cardXToX*_.size(self.cardObjDic),1) );  
+            _FightCardAnim.doEnter(cc.p(-300+self.cardXToX*_.size(self.cardInfoList),1) );  
             self.cardInfoList[id].setCardObject( obj );    
             self.cardInfoList[id].setViewCard( _ViewCard );
             self.cardInfoList[id].setFightCardAnim( _FightCardAnim );            
