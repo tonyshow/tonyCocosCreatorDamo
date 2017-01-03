@@ -1,3 +1,8 @@
+/**
+ * 功能：敌方战斗AI
+ * 作者：tony
+ * 时间：2016-12-22
+ */
 var _ = require('underscore');
 var Consts = require('./../../../Shared/Consts');
 cc.Class({
@@ -15,7 +20,7 @@ cc.Class({
         this.cb = cb;
         var self = this;
         var finish = cc.callFunc(function(){
-            var tmp =  _.random(1,2);//Consts.FightThinkAI.pass
+            var tmp =  _.random(1,2);
             self.cb(tmp);
         }, this);
 

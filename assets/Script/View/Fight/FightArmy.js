@@ -7,53 +7,70 @@ var _ = require('underscore');
 var Consts = require('./../../../Shared/Consts');
 var FightArmyBase = require('./FightArmyBase');
 var FightArmy = cc.Class({
-    extends: FightArmyBase, 
-    // use this for initialization
+    extends: FightArmyBase,  
     onLoad: function () {
          this._super();
     }, 
-
-    createCardObj : function( id ){ 
-        this._super(id);
-        var self = this;
-        var prefabPath = PlanApi.PlanPrefabs.getPath('common_card');
-        UtilGameObject.createAddparent( prefabPath , self.node ,function(obj){            
-            obj.setPosition(1000,-300);
-            obj.getComponent('ViewCard').setId( id ); 
-            var anim = obj.getComponent('FightCardAnim');
-            anim.doEnter(cc.p(-300+self.cardXToX*_.size(self.cardObjDic),1) ); 
-            self.cardObjDic.push(obj);            
-        });
-    },
-
+  
     refreshAllCardPos:function(){
         this._super();
-        var length = _.size( this.cardObjDic );
-        for(var i = 0 ; i<length;++i){
-            var anim = this.cardObjDic[i].getComponent('FightCardAnim');
-            anim.doRefreshPos( cc.p(-300+this.cardXToX*i,1) );
-        }
+        var self = this;      
+        var i = 0;
+        _.map( self.cardInfoList , function( _fightCardData ){ 
+            if( _fightCardData != null ){
+                cc.log('_fightCardData:'+_fightCardData);
+                _fightCardData.doRefreshPos(  cc.p(-300+self.cardXToX*i,1) );
+                ++i;
+            }            
+        });  
     },
     
-    //攻击
+    /**
+     * 出牌逻辑
+     */
     doAtk:function(){ 
-          this._super();
+        this._super();
         var self = this;
-        var length =    _.size( this.cardObjDic );
-        for( var i = 0 ; i<length;++i ){
-            var state = this.cardObjDic[i].getComponent('FightCardState');
-            if( state.getFightCardState() == Consts.FightCardState.CHOICE ){
-                var anim = this.cardObjDic[i].getComponent('FightCardAnim');
-                anim.doAnim( Consts.FightCardState.Fighting);    
-                this.cardObjDic[i] = null;
-            } 
-        }
 
-        this.cardObjDic = _.compact(this.cardObjDic);
-        this.refreshAllCardPos();
-        this.fightDirector.sendCreeps( this.cardMaxCnt -  _.size(this.cardObjDic) ,  function( id ){
-            self.createCardObj( id );
+        _.map( self.cardInfoList , function( _fightCardData , id ){ 
+            if( _fightCardData.isCanAtk() ){
+                _fightCardData.doAnim( Consts.FightCardState.Fighting );
+                self.remove( id );
+            } 
+        }); 
+        
+       
+        self.refreshAllCardPos();
+
+         cc.log('--攻击之后的卡牌数量 : %s ',self.getCardNum() );
+        self.fightDirector.sendCreeps( self.cardMaxCnt -  self.getCardNum() ,  function( id ){
+            cc.log('请求补牌 = %s',id);
+            self.addNewCard( id );
         });
+    },
+
+    /**
+    * 接受外部补牌指令
+    * id : 
+    */
+    addNewCard:function( id ){
+        this._super(id);
+        var self = this;
+        var prefabPath = PlanApi.PlanPrefabs.getPath('common_card'); 
+        var currCardNum = self.getCardNum();
+        UtilGameObject.createAddparent( prefabPath , self.node ,function(obj){      
+            obj.setPosition(1000,-300); 
+            var _ViewCard = obj.getComponent('ViewCard');
+            _ViewCard.setId( id );
+            var _FightCardAnim = obj.getComponent('FightCardAnim'); 
+            _FightCardAnim.doEnter(cc.p(-300+self.cardXToX*currCardNum,1) );   
+            var _FightCardState = obj.getComponent('FightCardState'); 
+
+            self.cardInfoList[id].setCardObject( obj );    
+            self.cardInfoList[id].setViewCard( _ViewCard );
+            self.cardInfoList[id].setFightCardAnim( _FightCardAnim ); 
+            self.cardInfoList[id].setFightCardState( _FightCardState );             
+        });       
     }
 });
 

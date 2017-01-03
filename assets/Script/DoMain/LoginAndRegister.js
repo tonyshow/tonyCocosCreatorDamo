@@ -1,3 +1,8 @@
+/**
+ * 功能：登录
+ * 作者：tony
+ * 时间：2016-12-22
+ */
 cc.Class({
     extends: cc.Component,
 

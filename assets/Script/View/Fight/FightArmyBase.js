@@ -1,5 +1,6 @@
 var _ = require('underscore');
 var Consts = require('./../../../Shared/Consts'); 
+var FightCardData = require('../Fight/FightCard/FightCardData');
 cc.Class({
     extends: cc.Component,
 
@@ -30,20 +31,20 @@ cc.Class({
     },
 
     onLoad: function () {
-        this.cardObjDic = [];        
         this.mySelfOutFightPower = Consts.OutFightPower.NONE;//我的出站标记
         this.fightDirector = this.director.getComponent('FightDirector');   
-        this.cardMaxCnt = 5;     
-    },
+        this.cardMaxCnt = 5; 
+        this.cardInfoList = {};//卡牌信息    
+    }, 
+           
 
-    createCardObj : function( id ){ 
-        //子类实现
-    },
-
+    /**
+     * 刷新所有的卡牌位置
+     */
     refreshAllCardPos:function(){
-        //子类实现
+        this.cardInfoList = _.compact(this.cardInfoList);
     },
-
+    
     refreshOutFightPower:function(value){ 
         this.mySelfOutFightPower = value;
     },    
@@ -55,5 +56,32 @@ cc.Class({
     //攻击
     doAtk:function(){ 
          //子类实现
-    }
+    },
+    
+    /**
+    * 接受外部补牌指令
+    * id : 
+    */
+    addNewCard:function( id ){ 
+        var fightCardData =  new FightCardData(id);
+        this.cardInfoList[id] = fightCardData;
+    },
+
+    /**
+     * 移除一个已出站的卡牌
+     */
+    remove:function(id){
+        this.cardInfoList[id] = null;
+        cc.log('移除之后的数量 : %s ' , this.getCardNum() );
+    },
+
+    getCardNum:function(){
+       var num = _.size(this.cardInfoList);
+       cc.log('当前卡牌数量 num : %s',num);
+       return num;
+    },
+
+    getCardDataById :function(id){
+        return this.cardInfoList[id];
+    },
 });

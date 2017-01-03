@@ -54,15 +54,17 @@ var FightView = cc.Class({
         this.btnStartEveCb();
     },
 
-    
+    //出牌按钮
     eveHit:function(){
         this.btnHitEveCb();
     },
 
+    //过按钮
     evePass:function(){
         this.btnPassEveCb();
     },
 
+    //结束按钮
     eveEnd:function(){
         this.btnEndEveCb();
     },

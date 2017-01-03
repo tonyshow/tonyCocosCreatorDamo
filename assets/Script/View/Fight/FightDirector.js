@@ -77,6 +77,7 @@ var FightDirector = cc.Class({
             self.switchOutFightPower(); 
         }); 
  
+        //敌方注册事件
         this.enemy.registerAction( function( code ){             
              if( Consts.FightThinkAI.pass == code ){
                 
@@ -90,10 +91,10 @@ var FightDirector = cc.Class({
         var self = this;
         for( var i = 1; i <= 5 ; ++i){
             this.cardCtr.sendGetCardId(  function(id){
-                self.mine.createCardObj(id);
+                self.mine.addNewCard(id);
             });
             this.cardCtr.sendGetCardId(  function(id){
-                self.enemy.createCardObj(id);
+                self.enemy.addNewCard(id);
             });
         } 
        this.setOutFightPower( this.randOutFightPower() ) ;

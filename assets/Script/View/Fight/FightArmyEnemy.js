@@ -36,16 +36,24 @@ cc.Class({
         this.actionCb = cb;
     },
 
-    createCardObj : function( id ){ 
+    /**
+    * 接受外部补牌指令
+    * id : 
+    */
+    addNewCard:function( id ){
         this._super(id);
         var self = this;
         var prefabPath = PlanApi.PlanPrefabs.getPath('common_cardEnemy');
+
         UtilGameObject.createAddparent( prefabPath , self.node ,function(obj){            
             obj.setPosition(0,-300);
-            obj.getComponent('ViewCard').setId( id ); 
-            var anim = obj.getComponent('FightCardAnimEnemy');
-            anim.doEnter(cc.p(-300+self.cardXToX*_.size(self.cardObjDic),1) ); 
-            self.cardObjDic.push(obj);            
-        });
-    },
+            var _ViewCard = obj.getComponent('ViewCard');
+            _ViewCard.setId( id );
+            var _FightCardAnim = obj.getComponent('FightCardAnimEnemy'); 
+            _FightCardAnim.doEnter(cc.p(-300+self.cardXToX*_.size(self.cardObjDic),1) );  
+            self.cardInfoList[id].setCardObject( obj );    
+            self.cardInfoList[id].setViewCard( _ViewCard );
+            self.cardInfoList[id].setFightCardAnim( _FightCardAnim );            
+        });       
+    }, 
 });

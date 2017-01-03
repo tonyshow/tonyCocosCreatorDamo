@@ -14,12 +14,7 @@ var FightCardCtr = cc.Class({
              default : null,
              type : FightCardFactory,
          }
-    },
-
-    // use this for initialization
-    onLoad: function () {
-
-    },
+    }, 
 
     //给队伍发放卡牌
     sendGetCardId: function( cb ){
