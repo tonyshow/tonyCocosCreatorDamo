@@ -34,7 +34,7 @@ cc.Class({
         this.mySelfOutFightPower = Consts.OutFightPower.NONE;//我的出站标记
         this.fightDirector = this.director.getComponent('FightDirector');   
         this.cardMaxCnt = 5; 
-        this.cardInfoList = [];//卡牌信息    
+        this.cardInfoList =[];//卡牌信息    
     }, 
            
 
@@ -42,13 +42,7 @@ cc.Class({
      * 刷新所有的卡牌位置
      */
     refreshAllCardPos:function(){
-        this.cardInfoList = _.compact(this.cardInfoList);
-
-        _.map( this.cardInfoList , function( _fightCardData , id ){ 
-            cc.log( 'id = %s  ,_fightCardData = %s  ',id ,_fightCardData)
-        }); 
-
-        cc.log('base - refreshAllCardPos = %s ', _.size(this.cardInfoList) );
+        this.cardInfoList = _.compact(this.cardInfoList); 
     },
     
     refreshOutFightPower:function(value){ 
@@ -70,8 +64,7 @@ cc.Class({
     */
     addNewCard:function( id ){ 
         var fightCardData =  new FightCardData(id);
-        this.cardInfoList.push( {id:id  ,fightCardData:fightCardData } ); 
-        cc.log('添加之后的数量addNewCard（） = %s ', _.size(this.cardInfoList) );
+        this.cardInfoList.push( {id:id ,fightCardData:fightCardData } );
         return fightCardData;
     },
     
@@ -79,19 +72,23 @@ cc.Class({
      * 移除一个已出站的卡牌
      */
     remove:function(id){ 
+        cc.log('移除一个已出站的卡牌 = %s ',id);
         this.cardInfoList = _.filter(this.cardInfoList,function(data){
-            return data.key != id;
+            cc.log('data.key = %s ',data.id);
+            return data.id != id;
         });
         cc.log('移除之后的数量 : %s ' , _.size(this.cardInfoList) );
     },
 
     getCardNum:function(){
-       var num = _.size(this.cardInfoList);
-       cc.log('当前卡牌数量 num : %s',num);
+       var num = _.size(this.cardInfoList); 
        return num;
     },
 
-    getCardDataById :function(id){
-        return this.cardInfoList[id];
+    getCardDataById :function(id){ 
+        var tmp = _.find(this.cardInfoList,function(tmp){
+            return tmp.id == id;
+        })
+        return tmp.fightCardData;
     },
 });

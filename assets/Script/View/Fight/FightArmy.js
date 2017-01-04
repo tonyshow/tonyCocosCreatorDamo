@@ -16,7 +16,8 @@ var FightArmy = cc.Class({
         this._super();
         var self = this;      
         var i = 0;
-        _.map( self.cardInfoList , function( _fightCardData ){ 
+        _.map( self.cardInfoList , function( tmp ){  
+            var _fightCardData = tmp.fightCardData;
             if( _fightCardData != null ){
                 cc.log('_fightCardData:'+_fightCardData);
                 _fightCardData.doRefreshPos(  cc.p(-300+self.cardXToX*i,1) );
@@ -32,17 +33,17 @@ var FightArmy = cc.Class({
         this._super();
         var self = this;
 
-        _.map( self.cardInfoList , function( _fightCardData , id ){ 
-            if( !_fightCardData && _fightCardData.isCanAtk() ){
-                _fightCardData.doAnim( Consts.FightCardState.Fighting );
-                self.remove( id );
-            } 
+        _.map( self.cardInfoList , function( tmp ){ 
+            var _fightCardData = tmp.fightCardData; 
+            if( _fightCardData.isCanAtk() ){
+                _fightCardData.doAnim( Consts.FightCardState.Fighting );            
+                 self.remove( tmp.id ); 
+            }  
         }); 
         
         self.refreshAllCardPos();
 
-        self.fightDirector.sendCreeps( self.cardMaxCnt -  self.getCardNum() ,  function( id ){
-            cc.log('请求补牌 = %s',id);
+        self.fightDirector.sendCreeps( self.cardMaxCnt -  self.getCardNum() ,  function( id ){ 
             self.addNewCard( id );
         });
     },
@@ -52,10 +53,10 @@ var FightArmy = cc.Class({
     * id : 
     */
     addNewCard:function( id ){
-       var tmp = this._super(id);
+        var tmp = this._super(id);      
         var self = this;
         var prefabPath = PlanApi.PlanPrefabs.getPath('common_card'); 
-        var currCardNum = self.getCardNum();
+        var currCardNum = self.getCardNum()-1;       
         UtilGameObject.createAddparent( prefabPath , self.node ,function(obj){      
             obj.setPosition(1000,-300); 
             var _ViewCard = obj.getComponent('ViewCard');
