@@ -19,11 +19,11 @@ cc.Class({
         this._super();
         var actionOneStep = null;
         if(Consts.FightCardState.NONE == fightCardState){
-            actionOneStep = cc.jumpBy(0.5, cc.p(0,this.moveHeight*-1), this.jumpHeight, 1);
+            actionOneStep = cc.jumpBy(0.1, cc.p(0,this.moveHeight*-1), this.jumpHeight, 1);
         }else if(Consts.FightCardState.CHOICE == fightCardState){
-            actionOneStep = cc.jumpBy(0.5, cc.p(0,this.moveHeight), this.jumpHeight, 1);
+            actionOneStep = cc.jumpBy(0.1, cc.p(0,this.moveHeight), this.jumpHeight, 1);
         }else if(Consts.FightCardState.Fighting == fightCardState){
-            actionOneStep = cc.jumpBy(1.0, cc.p(0,this.atkHeight), 0, 1);            
+            actionOneStep = cc.jumpBy(0.5, cc.p(0,this.atkHeight), 0, 1);            
         }
         if( Utils.IsNotNull(actionOneStep) ){
             this.node.runAction(actionOneStep);  
