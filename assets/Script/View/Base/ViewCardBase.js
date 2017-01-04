@@ -7,13 +7,13 @@ window.ViewCardBase= cc.Class({
            default:null,
            type:cc.Sprite,
        },
-       lable_type:{
-           default : null,
-           type : cc.Label,
+       icon_type:{
+           default:null,
+           type:cc.Sprite,
        },
-       lable_number:{
-           default : null,
-           type : cc.Label,
+       icon_number:{
+           default:null,
+           type:cc.Sprite,
        },
     },
  
@@ -28,24 +28,54 @@ window.ViewCardBase= cc.Class({
     //刷新UI
     //id : 卡牌表id
     refreshUI:function(){
-         this.setTypeUI();
-         this.setNumber();
+         this.setTypeUI(); 
     },
 
-    setTypeUI:function(){
+    /**
+     * 设置ui属性
+     */
+    setTypeUI:function(){ 
+        this.setNumber();
+        this.setCardIcon();
+        this.setCardType();
+    },
+
+    /**
+     * 设置卡牌插画
+     */
+    setCardIcon : function(){
         var self = this;
-        var cardTypeText = PlanApi.PlanGameWorld.getWorld( 'card_type_'+ this.dataCard.getType()); 
-        this.lable_type.string =cardTypeText; 
         var path = this.dataCard.getIconPath();
         cc.loader.loadRes(path, cc.SpriteFrame, function (err, spriteFrame) { 
             var sprite = self.icon_card.getComponent(cc.Sprite);
             sprite.spriteFrame = spriteFrame; 
         });
-
-        //this.icon_card.loadTexture();
     },
 
+    /**
+     * 设置卡牌插画卡牌数字
+     */
     setNumber:function(){
-        this.lable_number.string = this.dataCard.getNumber();
+        var self = this;
+        var temp = PlanApi.PlanSpritePath.getPath('icon_card_number_x'); 
+        cc.log(temp);
+        var path = cc.formatStr(temp,this.dataCard.getNumber());
+        cc.loader.loadRes(path, cc.SpriteFrame, function (err, spriteFrame) { 
+            var sprite = self.icon_number.getComponent(cc.Sprite);
+            sprite.spriteFrame = spriteFrame; 
+        });
+    },
+
+    /**
+     * 设置卡牌插画卡牌花色
+     */
+    setCardType:function(){
+        var self = this;
+        var temp = PlanApi.PlanSpritePath.getPath('icon_card_type_x');  
+        var path = cc.formatStr(temp,this.dataCard.getType());
+        cc.loader.loadRes(path, cc.SpriteFrame, function (err, spriteFrame) { 
+            var sprite = self.icon_type.getComponent(cc.Sprite);
+            sprite.spriteFrame = spriteFrame; 
+        });
     }  
 }); 

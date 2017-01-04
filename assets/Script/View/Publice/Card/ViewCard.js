@@ -4,8 +4,7 @@ var ViewCard = cc.Class({
     properties: {
 
     },
-
-    // use this for initialization
+  
     onLoad: function () {
         this._super();
         var DataCard = require('./../../../MgData/Data/DataCard'); 
@@ -16,7 +15,6 @@ var ViewCard = cc.Class({
     setId : function( id ){  
         this.id = id;
     }, 
-
 }); 
 
 module.exports = ViewCard;

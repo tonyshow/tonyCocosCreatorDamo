@@ -40,20 +40,20 @@ cc.Class({
     * 接受外部补牌指令
     * id : 
     */
-    addNewCard:function( id ){
-        // this._super(id);
-        // var self = this;
-        // var prefabPath = PlanApi.PlanPrefabs.getPath('common_cardEnemy');
+    addNewCard:function( id ){       
+        var tmp = this._super(id);      
+        var self = this;
+        var prefabPath = PlanApi.PlanPrefabs.getPath('common_cardEnemy'); 
+        var currCardNum = self.getCardNum()-1;       
+        UtilGameObject.createAddparent( prefabPath , self.node ,function(obj){      
+            obj.setPosition(1000,-300); 
+            var _ViewCard = obj.getComponent('ViewCard');
+            _ViewCard.setId( id );
+            var _FightCardAnim = obj.getComponent('FightCardAnimEnemy'); 
+            _FightCardAnim.doEnter(cc.p(-300+self.cardXToX*currCardNum,1) );   
+            var _FightCardState = obj.getComponent('FightCardState');  
+            tmp.setCardObject( obj ).setViewCard( _ViewCard ).setFightCardAnim( _FightCardAnim ).setFightCardState( _FightCardState );  
+        });    
 
-        // UtilGameObject.createAddparent( prefabPath , self.node ,function(obj){            
-        //     obj.setPosition(0,-300);
-        //     var _ViewCard = obj.getComponent('ViewCard');
-        //     _ViewCard.setId( id );
-        //     var _FightCardAnim = obj.getComponent('FightCardAnimEnemy'); 
-        //     _FightCardAnim.doEnter(cc.p(-300+self.cardXToX*_.size(self.cardInfoList),1) );  
-        //     self.cardInfoList[id].setCardObject( obj );    
-        //     self.cardInfoList[id].setViewCard( _ViewCard );
-        //     self.cardInfoList[id].setFightCardAnim( _FightCardAnim );            
-        // });       
     }, 
 });

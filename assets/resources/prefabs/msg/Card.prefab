@@ -206,7 +206,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "LabelNumber",
+    "_name": "IconNumber",
     "_objFlags": 0,
     "_opacity": 255,
     "_color": {
@@ -227,8 +227,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 44.49,
-      "height": 40
+      "width": 45,
+      "height": 36
     },
     "_children": [],
     "_rotationX": 0,
@@ -237,8 +237,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 23.63,
-      "y": 55
+      "x": 53,
+      "y": 73
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -262,26 +262,6 @@
     "groupIndex": 0
   },
   {
-    "__type__": "cc.Label",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 6
-    },
-    "_enabled": true,
-    "_useOriginalSize": false,
-    "_actualFontSize": 40,
-    "_fontSize": 40,
-    "_lineHeight": 40,
-    "_enableWrapText": true,
-    "_N$file": null,
-    "_isSystemFontUsed": true,
-    "_N$string": "12",
-    "_N$horizontalAlign": 2,
-    "_N$verticalAlign": 1,
-    "_N$overflow": 0
-  },
-  {
     "__type__": "cc.Widget",
     "_name": "",
     "_objFlags": 0,
@@ -292,8 +272,8 @@
     "isAlignOnce": true,
     "_alignFlags": 33,
     "_left": 0,
-    "_right": 11.124999999999996,
-    "_top": 0,
+    "_right": -18.5,
+    "_top": -16,
     "_bottom": 0,
     "_verticalCenter": 0,
     "_horizontalCenter": 0,
@@ -305,6 +285,32 @@
     "_isAbsVerticalCenter": true,
     "_originalWidth": 0,
     "_originalHeight": 0
+  },
+  {
+    "__type__": "cc.Sprite",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 6
+    },
+    "_enabled": true,
+    "_spriteFrame": {
+      "__uuid__": "37fa9ea3-3d48-4a16-bc7b-50cb3d8bd1d1"
+    },
+    "_type": 0,
+    "_sizeMode": 1,
+    "_fillType": 0,
+    "_fillCenter": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_fillStart": 0,
+    "_fillRange": 0,
+    "_isTrimmedMode": true,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
+    "_atlas": null
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -319,7 +325,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "LabelType",
+    "_name": "IconType",
     "_objFlags": 0,
     "_opacity": 255,
     "_color": {
@@ -340,8 +346,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 11.12,
-      "height": 20
+      "width": 46,
+      "height": 54
     },
     "_children": [],
     "_rotationX": 0,
@@ -350,8 +356,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -49,
-      "y": -61
+      "x": -43,
+      "y": -44
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -375,26 +381,6 @@
     "groupIndex": 0
   },
   {
-    "__type__": "cc.Label",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 10
-    },
-    "_enabled": true,
-    "_useOriginalSize": false,
-    "_actualFontSize": 20,
-    "_fontSize": 20,
-    "_lineHeight": 20,
-    "_enableWrapText": true,
-    "_N$file": null,
-    "_isSystemFontUsed": true,
-    "_N$string": "1",
-    "_N$horizontalAlign": 0,
-    "_N$verticalAlign": 1,
-    "_N$overflow": 0
-  },
-  {
     "__type__": "cc.Widget",
     "_name": "",
     "_objFlags": 0,
@@ -404,9 +390,9 @@
     "_enabled": true,
     "isAlignOnce": true,
     "_alignFlags": 9,
-    "_left": 2.439999999999997,
+    "_left": -9,
     "_right": 0,
-    "_top": 126,
+    "_top": 92,
     "_bottom": 0,
     "_verticalCenter": 0,
     "_horizontalCenter": 0,
@@ -418,6 +404,32 @@
     "_isAbsVerticalCenter": true,
     "_originalWidth": 22.25,
     "_originalHeight": 0
+  },
+  {
+    "__type__": "cc.Sprite",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 10
+    },
+    "_enabled": true,
+    "_spriteFrame": {
+      "__uuid__": "defae354-e040-4fdf-9453-793432b4c198"
+    },
+    "_type": 0,
+    "_sizeMode": 1,
+    "_fillType": 0,
+    "_fillCenter": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_fillStart": 0,
+    "_fillRange": 0,
+    "_isTrimmedMode": true,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
+    "_atlas": null
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -496,11 +508,11 @@
     "icon_card": {
       "__id__": 3
     },
-    "lable_type": {
-      "__id__": 11
+    "icon_type": {
+      "__id__": 12
     },
-    "lable_number": {
-      "__id__": 7
+    "icon_number": {
+      "__id__": 8
     }
   },
   {
