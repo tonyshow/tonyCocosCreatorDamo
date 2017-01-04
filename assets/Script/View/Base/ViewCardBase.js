@@ -33,8 +33,16 @@ window.ViewCardBase= cc.Class({
     },
 
     setTypeUI:function(){
+        var self = this;
         var cardTypeText = PlanApi.PlanGameWorld.getWorld( 'card_type_'+ this.dataCard.getType()); 
-        this.lable_type.string =cardTypeText;
+        this.lable_type.string =cardTypeText; 
+        var path = this.dataCard.getIconPath();
+        cc.loader.loadRes(path, cc.SpriteFrame, function (err, spriteFrame) { 
+            var sprite = self.icon_card.getComponent(cc.Sprite);
+            sprite.spriteFrame = spriteFrame; 
+        });
+
+        //this.icon_card.loadTexture();
     },
 
     setNumber:function(){

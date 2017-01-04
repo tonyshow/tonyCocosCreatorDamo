@@ -71,13 +71,10 @@ cc.Class({
     /**
      * 移除一个已出站的卡牌
      */
-    remove:function(id){ 
-        cc.log('移除一个已出站的卡牌 = %s ',id);
-        this.cardInfoList = _.filter(this.cardInfoList,function(data){
-            cc.log('data.key = %s ',data.id);
+    remove:function(id){  
+        this.cardInfoList = _.filter(this.cardInfoList,function(data){ 
             return data.id != id;
-        });
-        cc.log('移除之后的数量 : %s ' , _.size(this.cardInfoList) );
+        }); 
     },
 
     getCardNum:function(){

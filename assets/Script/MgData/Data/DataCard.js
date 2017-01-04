@@ -55,4 +55,10 @@ pro.getHurt = function(){
     return this.getType()*10 + this.getNumber();
 };
 
+/**
+ * 获取卡牌icon路径
+ */
+pro.getIconPath = function(){ 
+    return PlanApi.PlanSpritePath.getPath(this.planData.iconId);
+};
 module.exports = DataCard;

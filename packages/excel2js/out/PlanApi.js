@@ -5,7 +5,7 @@ var exp = module.exports = {};
 
 var modules = exp.modules = {};
 
-var names =['PlanCommonParameter', 'PlanScene', 'PlanGameWorld', 'PlanDialog', 'PlanCard', 'PlanGameConfig', 'PlanMsg', 'PlanPrefabs'];
+var names =['PlanCommonParameter', 'PlanScene', 'PlanGameWorld', 'PlanDialog', 'PlanCard', 'PlanGameConfig', 'PlanSpritePath', 'PlanMsg', 'PlanPrefabs'];
 
 function create( name ){
 	if("PlanCommonParameter"==name){
@@ -32,6 +32,10 @@ function create( name ){
 		var PlanGameConfig = require('./../../MgData/PlanData/PlanGameConfig');
 		return new PlanGameConfig();
 	}
+	else if("PlanSpritePath"==name){
+		var PlanSpritePath = require('./../../MgData/PlanData/PlanSpritePath');
+		return new PlanSpritePath();
+	}
 	else if("PlanMsg"==name){
 		var PlanMsg = require('./../../MgData/PlanData/PlanMsg');
 		return new PlanMsg();
@@ -42,7 +46,7 @@ function create( name ){
 	}
 }
 function doman(){   
-    for(var i = 0 ; i < 8 ; ++i ){
+    for(var i = 0 ; i < 9 ; ++i ){
         var name = names[i];
         Object.defineProperty(exp, name, {
             get: (function (name) {
