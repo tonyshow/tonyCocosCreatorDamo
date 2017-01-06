@@ -1,0 +1,1 @@
+美术制作预设体必须放在resources/prefabs
