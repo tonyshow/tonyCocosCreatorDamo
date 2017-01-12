@@ -33,5 +33,16 @@ module.exports = {
     FightThinkAI:{
         pass:1,
         atk:2,//攻击
-    }
+    },
+
+    /**
+     * 战队卡牌数量上限
+     */
+    ArmyCardLimit:5,
+
+    /**
+     * 一组卡牌数量上限
+     */
+    OneGroupCardLimit:54
+
 }

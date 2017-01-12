@@ -44,7 +44,7 @@ var FightDirector = cc.Class({
         this.enemy.setEnumArmy( Consts.EnumFightArmy.ENEMY ); 
         this.armyGroup.forEach( function(army) {
             army.registerReportMachine( function(vEnumFightArmy){  
-                 var num = 5 - this.getCardNum(); 
+                 var num = Consts.ArmyCardLimit - this.getCardNum(); 
                  if(num>0){
                      self.cardCtr.sendGetCardId(function(ids){  
                          self.armyGroup[vEnumFightArmy].addNewCardGroup(ids); 
@@ -94,7 +94,7 @@ var FightDirector = cc.Class({
     //开始发牌
     startFight : function(){ 
         var self = this;
-        for( var i = 1; i <= 5 ; ++i){
+        for( var i = 1; i <= Consts.ArmyCardLimit ; ++i){
             this.cardCtr.sendGetCardId(  function(id){
                 self.mine.addNewCard(id);
             });

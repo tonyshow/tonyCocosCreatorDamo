@@ -4,7 +4,7 @@
  * 时间：2016-12-22
  */
 var _ = require('underscore');
-
+var Consts = require('./../../../Shared/Consts');
 var FightCardFactory = cc.Class({
     extends: cc.Component,
     // use this for initialization
@@ -16,7 +16,7 @@ var FightCardFactory = cc.Class({
     //初始化仓库
     initCardDic : function(){
          this.cards = [];
-         for( var i = 1; i <= 54 ; ++i ){
+         for( var i = 1; i <= Consts.OneGroupCardLimit ; ++i ){
              this.cards.push(i);
          } 
     },

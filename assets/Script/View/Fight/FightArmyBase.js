@@ -70,6 +70,7 @@ cc.Class({
     
     /**
      * 接受外部补牌指令 
+     * ids:卡牌id组
      */
     addNewCardGroup:function( ids ){
         var self = this;
@@ -86,6 +87,9 @@ cc.Class({
         }); 
     },
 
+    /**
+     * 获取卡牌数量
+     */
     getCardNum:function(){
        var num = _.size(this.cardInfoList); 
        return num;
