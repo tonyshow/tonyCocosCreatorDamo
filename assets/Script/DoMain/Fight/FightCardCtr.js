@@ -16,10 +16,18 @@ var FightCardCtr = cc.Class({
          }
     }, 
 
-    //给队伍发放卡牌
-    sendGetCardId: function( cb ){
-        var id =  this.cardFactory.productOneCard();      
-        cb(id);
+    /**
+     * 给队伍发放卡牌
+     * num:卡牌数量
+     */
+    sendGetCardId: function( cb , num ){
+        num=num || 1;
+        var i = 0;
+        var cardIds = [];
+        for(i;i<num;++i){
+            cardIds.push( this.cardFactory.productOneCard() );             
+        }
+        cb(cardIds);
     }
 });
 

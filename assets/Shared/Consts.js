@@ -11,6 +11,7 @@ module.exports = {
         NONE:1,     //未选中
         CHOICE:2,   //选中
         Fighting:3, //出站
+        Finsh : 4   //完成(通知出牌完成)
     },
 
     //出战权
@@ -20,6 +21,7 @@ module.exports = {
         MINE:2,     //我方
         ENEMY:3     //敌方
     },
+
     //战斗按钮组类型
     FightBtnGroup:{
         NONE:1,

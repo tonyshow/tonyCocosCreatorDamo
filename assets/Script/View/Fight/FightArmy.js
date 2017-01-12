@@ -43,9 +43,7 @@ var FightArmy = cc.Class({
         
         self.refreshAllCardPos();
 
-        self.fightDirector.sendCreeps( self.cardMaxCnt -  self.getCardNum() ,  function( id ){ 
-            self.addNewCard( id );
-        });
+        this.reportStateMachine( this.enumFightArmy );
     },
 
     /**

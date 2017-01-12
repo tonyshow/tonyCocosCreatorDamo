@@ -35,13 +35,23 @@ var FightDirector = cc.Class({
 
     onLoad: function () {
         var self = this; 
-
+        this.armyGroup = [];
+        this.armyGroup[Consts.EnumFightArmy.MINE]=this.mine;
+        this.armyGroup[Consts.EnumFightArmy.ENEMY]=this.enemy;
         //当前战场的出战权
         this.currOutFightPower = Consts.OutFightPower.DIRCETOR;
-         
         this.mine.setEnumArmy( Consts.EnumFightArmy.MINE );
         this.enemy.setEnumArmy( Consts.EnumFightArmy.ENEMY ); 
-
+        this.armyGroup.forEach( function(army) {
+            army.registerReportMachine( function(vEnumFightArmy){  
+                 var num = 5 - this.getCardNum(); 
+                 if(num>0){
+                     self.cardCtr.sendGetCardId(function(ids){  
+                         self.armyGroup[vEnumFightArmy].addNewCardGroup(ids); 
+                     },num);
+                 } 
+            } );
+        }, this);        
 
         //注册按钮事件
         //开始
@@ -49,12 +59,7 @@ var FightDirector = cc.Class({
         this.fightView.registerBtnStart( function(){
             self.startFight();
             self.fightView.setBtnGroupType( Consts.FightBtnGroup.GAME);
-        } );   
-
-        //结束
-        this.fightView.registerBtnEnd( function(){
-            
-        } );     
+        } );         
 
         //过
         this.fightView.registerBtnPass( function(){ 
@@ -118,32 +123,9 @@ var FightDirector = cc.Class({
         return this.currOutFightPower ==_value; 
     },
 
-    /**
-     * 通过队伍类型请求出战
-     * enumFightArmy : Consts.EnumFightArmy
-     * cb ：回调  ；
-     */ 
-    sendOutFight:function( enumFightArmy ,cb ){
-
-    },
-
     setOutFightPower : function( _v ){ 
         this.currOutFightPower = _v;
         this.fightView.refreshLabelPower( this.currOutFightPower );
-    },
-
-    //补兵请求 （外部调用）
-    sendCreeps : function( num , cb ){ 
-       cc.log('导演下发卡牌数量 num :　%s',num);
-       for(var i = 0 ; i < num ;++i){
-           this.cardCtr.sendGetCardId(  function(id){ 
-              if( id > 0 ){
-                  cb(id);
-              }else{
-                  cc.warn('牌库已空');
-              } 
-           });
-       } 
     },
 
 });

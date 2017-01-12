@@ -34,9 +34,9 @@ cc.Class({
         this.mySelfOutFightPower = Consts.OutFightPower.NONE;//我的出站标记
         this.fightDirector = this.director.getComponent('FightDirector');   
         this.cardMaxCnt = 5; 
-        this.cardInfoList =[];//卡牌信息    
-    }, 
-           
+        this.cardInfoList =[];//卡牌信息
+        this.reportStateMachine = null; //状态报告机 ( 当出牌完成时调用：this.reportStateMachine() )  
+    },  
 
     /**
      * 刷新所有的卡牌位置
@@ -69,6 +69,15 @@ cc.Class({
     },
     
     /**
+     * 接受外部补牌指令 
+     */
+    addNewCardGroup:function( ids ){
+        var self = this;
+        ids.forEach(function(id) {
+            self.addNewCard(id);
+        }, this);
+    },
+    /**
      * 移除一个已出站的卡牌
      */
     remove:function(id){  
@@ -88,4 +97,11 @@ cc.Class({
         })
         return tmp.fightCardData;
     },
+
+    /**
+     * 注册报告机
+     */
+    registerReportMachine:function( cb ){
+        this.reportStateMachine = cb;
+    }
 });
