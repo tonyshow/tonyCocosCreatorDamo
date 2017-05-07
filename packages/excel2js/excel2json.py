@@ -313,7 +313,7 @@ def create_dataApi():
 	txtFile.write( doNextLine('var exp = module.exports = {};'));
 	txtFile.write( doNextLine('var modules = exp.modules = {};'));
 	tmpNames = 'var names ={0};'.format(fileNameList);
-	tmpNames = tmpNames.replace('u', '')
+	tmpNames = tmpNames.replace("u'Plan", "'Plan");
 	txtFile.write( doNextLine( tmpNames )); 
 	txtFile.write( doNextOneLine('function create( name ){'));
 	allFileNum = len(fileNameList); 
